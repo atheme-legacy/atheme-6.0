@@ -1,3 +1,9 @@
+Atheme Services 6.0.1 Release Notes
+===================================
+chanserv
+- fix a crash when WHO is used on a user who is not logged in to
+  services.
+
 Atheme Services 6.0 Release Notes
 =================================
 All bugfixes from the 5.2 branch of Atheme are also in 6.0.
