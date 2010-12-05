@@ -1,5 +1,13 @@
 Atheme Services 6.0.1 Release Notes
 ===================================
+ircd protocol
+- unreal: Do not set usermode +d (deaf) on users if the IRCd does not
+  support ESVID.
+operserv
+- If a module load requires a rehash, do a rehash on MODRELOAD.
+
+Atheme Services 6.0.1 Release Notes
+===================================
 chanserv
 - fix a crash when WHO is used on a user who is not logged in to
   services.
