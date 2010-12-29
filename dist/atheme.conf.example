@@ -988,7 +988,7 @@ chanserv {
 	 * This also solves the "join-mode" problem where someone recreates
 	 * a registered channel and then sets some modes before they are
 	 * deopped.
-	 * This is currently supported for charybdis, hybrid, ratbox,
+	 * This is currently supported for charybdis, hybrid, ratbox, unreal,
 	 * bahamut and inspircd 1.1+. For charybdis, hybrid and ratbox
 	 * it only fully works with TS6, with TS5 bans and last-moment modes
 	 * will still apply.

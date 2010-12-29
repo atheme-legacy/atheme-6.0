@@ -1,3 +1,23 @@
+Atheme Services 6.0.3 Release Notes
+===================================
+ircd protocol
+- unreal: Add support for changets.
+- charybdis: Allow locking of modes provided by extensions.
+- Make SERVER_NAME() work a bit better if the IRCd does not
+  support SID's/UID's.
+memoserv
+- When informing a user about new memos, always explicitly use
+  memoserv's nick.
+xmlrpc
+- Call bad_password() when someone tries to login with a bad password
+  over XMLRPC.
+other
+- Do not attempt to add properties to objects that do not exist at
+  loadtime.
+- Make the build a bit better with uClibc.
+- Document some typical build failures and how to fix them in the
+  INSTALL file.
+
 Atheme Services 6.0.2 Release Notes
 ===================================
 ircd protocol
