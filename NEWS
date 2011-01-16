@@ -1,3 +1,12 @@
+Atheme Services 6.0.4 Release Notes
+===================================
+groupserv
+- fix users getting incorrect flags on DB load.
+operserv
+- remove some usages of bzero() in COMPARE.
+other
+- finally fix the --disable-nls rubbish on build.
+
 Atheme Services 6.0.3 Release Notes
 ===================================
 ircd protocol
