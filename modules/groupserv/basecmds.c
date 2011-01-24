@@ -266,6 +266,7 @@ static void gs_cmd_drop(sourceinfo_t *si, int parc, char *parv[])
 	}
 
 	logcommand(si, CMDLOG_REGISTER, "DROP: \2%s\2", entity(mg)->name);
+	remove_group_chanacs(mg);
 	object_unref(mg);
 	command_success_nodata(si, _("The group \2%s\2 has been dropped."), name);
 	return;
@@ -637,6 +638,7 @@ static void gs_cmd_fdrop(sourceinfo_t *si, int parc, char *parv[])
 
 	logcommand(si, CMDLOG_ADMIN | LG_REGISTER, "FDROP: \2%s\2", entity(mg)->name);
         wallops("%s dropped the group \2%s\2", get_oper_name(si), name);
+	remove_group_chanacs(mg);
 	object_unref(mg);
 	command_success_nodata(si, _("The group \2%s\2 has been dropped."), name);
 	return;
