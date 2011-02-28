@@ -18,7 +18,7 @@ DECLARE_MODULE_V1
 
 static void command_namegen(sourceinfo_t *si, int parc, char *parv[]);
 
-command_t cmd_namegen = { "NAMEGEN", N_("Generates some names to ponder."), AC_NONE, 0, command_namegen, { .path = "gameserv/namegen" } };
+command_t cmd_namegen = { "NAMEGEN", N_("Generates some names to ponder."), AC_NONE, 2, command_namegen, { .path = "gameserv/namegen" } };
 
 void _modinit(module_t * m)
 {
@@ -59,6 +59,14 @@ static void command_namegen(sourceinfo_t *si, int parc, char *parv[])
 	unsigned int iter;
 	unsigned int amt = 20;
 	char buf[BUFSIZE];
+
+	if (parv[0])
+		amt = atoi(parv[0]);
+
+
+	/* limit to 20 */
+	if (amt > 20)
+		amt = 20;
 
 	*buf = '\0';
 
