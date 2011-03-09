@@ -95,7 +95,7 @@ void _modinit(module_t *m)
 	command_add(&cs_role_del, cs_role_cmds);
 }
 
-void _moddeinit(module_unload_intent_t intent)
+void _moddeinit()
 {
 	service_named_unbind_command("chanserv", &cs_access);
 	service_named_unbind_command("chanserv", &cs_role);
@@ -375,7 +375,6 @@ static const char *get_template_name(mychan_t *mc, unsigned int level)
 	mowgli_node_t *n;
 	static char flagname[400];
 	template_t *exact_t = NULL;
-	unsigned int flagcount = count_bits(level);
 
 	l = build_template_list(mc);
 
@@ -501,7 +500,6 @@ static void update_role_entry(sourceinfo_t *si, mychan_t *mc, const char *role, 
 			changes++;
 			chanacs_modify_simple(ca, flags, ~flags);
 
-			hook_call_channel_acl_change(ca);
 			chanacs_close(ca);
 		}
 	}
@@ -677,7 +675,7 @@ static void cs_cmd_access_info(sourceinfo_t *si, int parc, char *parv[])
 	role = get_template_name(mc, ca->level);
 
 	tm = *localtime(&ca->tmodified);
-	strftime(strfbuf, sizeof(strfbuf) - 1, config_options.time_format, &tm);
+	strftime(strfbuf, sizeof(strfbuf) - 1, "%b %d %H:%M:%S %Y", &tm);
 
 	command_success_nodata(si, _("Access for \2%s\2 in \2%s\2:"), target, channel);
 
@@ -772,7 +770,6 @@ static void cs_cmd_access_del(sourceinfo_t *si, int parc, char *parv[])
 	role = get_template_name(mc, ca->level);
 
 	ca->level = 0;
-	hook_call_channel_acl_change(ca);
 	chanacs_close(ca);
 
 	command_success_nodata(si, _("\2%s\2 was removed from the \2%s\2 role in \2%s\2."), target, role, channel);
@@ -856,7 +853,6 @@ static void cs_cmd_access_add(sourceinfo_t *si, int parc, char *parv[])
 	}
 	ca->level = new_level;
 
-	hook_call_channel_acl_change(ca);
 	chanacs_close(ca);
 
 	command_success_nodata(si, _("\2%s\2 was added with the \2%s\2 role in \2%s\2."), target, role, channel);
@@ -941,7 +937,6 @@ static void cs_cmd_access_set(sourceinfo_t *si, int parc, char *parv[])
 
 	ca->level = new_level;
 
-	hook_call_channel_acl_change(ca);
 	chanacs_close(ca);
 
 	command_success_nodata(si, _("\2%s\2 now has the \2%s\2 role in \2%s\2."), target, role, channel);
