@@ -84,6 +84,7 @@ modules/gameserv/namegen.c
 modules/gameserv/rps.c
 modules/global/main.c
 modules/groupserv/basecmds.c
+modules/groupserv/groupserv.c
 modules/groupserv/hooks.c
 modules/groupserv/set.c
 modules/helpserv/helpme.c

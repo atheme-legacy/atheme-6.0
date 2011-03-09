@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Spanish language file for Atheme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-11-28 23:22-0300\n"
+"POT-Creation-Date: 2011-03-09 03:46-0300\n"
 "PO-Revision-Date: 2010-11-30 23:29-0300\n"
 "Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
 "Language-Team: Spanish <shadowm2006@gmail.com>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: modules/alis/main.c:416 modules/botserv/help.c:39
-#: modules/botserv/set_core.c:47 modules/chanserv/access.c:109
-#: modules/chanserv/access.c:125 modules/chanserv/clear.c:44
+#: modules/botserv/set_core.c:47 modules/chanserv/access.c:111
+#: modules/chanserv/access.c:127 modules/chanserv/clear.c:44
 #: modules/chanserv/help.c:48 modules/chanserv/help.c:101
 #: modules/chanserv/set_core.c:43 modules/gameserv/help.c:39
 #: modules/groupserv/basecmds.c:35 modules/groupserv/set.c:59
@@ -48,8 +48,8 @@ msgid "For more information on a command, type:"
 msgstr "Para más información sobre un comando, escriba:"
 
 #: modules/alis/main.c:425 modules/botserv/help.c:48
-#: modules/botserv/set_core.c:55 modules/chanserv/access.c:115
-#: modules/chanserv/access.c:131 modules/chanserv/clear.c:52
+#: modules/botserv/set_core.c:55 modules/chanserv/access.c:117
+#: modules/chanserv/access.c:133 modules/chanserv/clear.c:52
 #: modules/chanserv/help.c:85 modules/chanserv/help.c:103
 #: modules/chanserv/set_core.c:53 modules/gameserv/help.c:48
 #: modules/groupserv/basecmds.c:44 modules/groupserv/set.c:69
@@ -60,20 +60,20 @@ msgstr "Para más información sobre un comando, escriba:"
 msgid "***** End of Help *****"
 msgstr "***** Fin de la Ayuda *****"
 
-#: modules/backend/opensex.c:1082
+#: modules/backend/opensex.c:1089
 #, c-format
 msgid "DATABASE ERROR: db-open-read: cannot open '%s' for reading: %s"
 msgstr ""
 "ERROR DE BASE DE DATOS: db-open-read: no se pudo abrir '%s' para leer: %s"
 
-#: modules/backend/opensex.c:1116
+#: modules/backend/opensex.c:1123
 #, c-format
 msgid "DATABASE ERROR: db-open-write: cannot open '%s' for writing: %s"
 msgstr ""
 "ERROR DE BASE DE DATOS: db-open-write: no se pudo abrir '%s' para escribir: "
 "%s"
 
-#: modules/backend/opensex.c:1162
+#: modules/backend/opensex.c:1169
 #, c-format
 msgid ""
 "DATABASE ERROR: db_save(): cannot rename services.db.new to services.db: %s"
@@ -95,40 +95,40 @@ msgstr "Sintaxis: SAY <#canal> <mensaje>"
 
 #: modules/botserv/bottalk.c:55 modules/botserv/bottalk.c:109
 #: modules/botserv/set_fantasy.c:70 modules/botserv/set_nobot.c:55
-#: modules/chanserv/access.c:593 modules/chanserv/access.c:663
-#: modules/chanserv/access.c:758 modules/chanserv/access.c:834
-#: modules/chanserv/access.c:916 modules/chanserv/access.c:995
-#: modules/chanserv/access.c:1034 modules/chanserv/access.c:1082
-#: modules/chanserv/akick.c:89 modules/chanserv/ban.c:55
-#: modules/chanserv/ban.c:145 modules/chanserv/clear_bans.c:68
-#: modules/chanserv/clear_users.c:55 modules/chanserv/close.c:87
-#: modules/chanserv/count.c:56 modules/chanserv/drop.c:81
-#: modules/chanserv/drop.c:163 modules/chanserv/fflags.c:54
-#: modules/chanserv/flags.c:119 modules/chanserv/ftransfer.c:58
-#: modules/chanserv/getkey.c:48 modules/chanserv/halfop.c:69
-#: modules/chanserv/halfop.c:150 modules/chanserv/hold.c:54
-#: modules/chanserv/info.c:61 modules/chanserv/invite.c:61
-#: modules/chanserv/kick.c:58 modules/chanserv/kick.c:126
-#: modules/chanserv/mark.c:55 modules/chanserv/op.c:63
-#: modules/chanserv/op.c:138 modules/chanserv/owner.c:69
-#: modules/chanserv/owner.c:150 modules/chanserv/protect.c:69
-#: modules/chanserv/protect.c:150 modules/chanserv/quiet.c:141
-#: modules/chanserv/quiet.c:233 modules/chanserv/recover.c:55
-#: modules/chanserv/set_email.c:44 modules/chanserv/set_entrymsg.c:43
-#: modules/chanserv/set_fantasy.c:58 modules/chanserv/set_founder.c:80
-#: modules/chanserv/set_gameserv.c:45 modules/chanserv/set_guard.c:58
-#: modules/chanserv/set_keeptopic.c:43 modules/chanserv/set_limitflags.c:47
-#: modules/chanserv/set_mlock.c:58 modules/chanserv/set_prefix.c:72
-#: modules/chanserv/set_private.c:47 modules/chanserv/set_property.c:61
-#: modules/chanserv/set_restricted.c:43 modules/chanserv/set_secure.c:43
-#: modules/chanserv/set_topiclock.c:43 modules/chanserv/set_url.c:44
-#: modules/chanserv/set_verbose.c:43 modules/chanserv/status.c:50
-#: modules/chanserv/template.c:94 modules/chanserv/topic.c:62
-#: modules/chanserv/topic.c:126 modules/chanserv/topic.c:201
-#: modules/chanserv/unban_self.c:68 modules/chanserv/voice.c:63
-#: modules/chanserv/voice.c:131 modules/chanserv/why.c:70
-#: modules/chanserv/xop.c:102 modules/chanserv/xop.c:419
-#: modules/gameserv/dice.c:87
+#: modules/chanserv/access.c:558 modules/chanserv/access.c:628
+#: modules/chanserv/access.c:723 modules/chanserv/access.c:800
+#: modules/chanserv/access.c:883 modules/chanserv/access.c:970
+#: modules/chanserv/access.c:1010 modules/chanserv/access.c:1090
+#: modules/chanserv/access.c:1169 modules/chanserv/akick.c:89
+#: modules/chanserv/ban.c:55 modules/chanserv/ban.c:145
+#: modules/chanserv/clear_bans.c:68 modules/chanserv/clear_users.c:55
+#: modules/chanserv/close.c:87 modules/chanserv/count.c:56
+#: modules/chanserv/drop.c:81 modules/chanserv/drop.c:163
+#: modules/chanserv/fflags.c:54 modules/chanserv/flags.c:119
+#: modules/chanserv/ftransfer.c:58 modules/chanserv/getkey.c:48
+#: modules/chanserv/halfop.c:69 modules/chanserv/halfop.c:150
+#: modules/chanserv/hold.c:54 modules/chanserv/info.c:61
+#: modules/chanserv/invite.c:61 modules/chanserv/kick.c:58
+#: modules/chanserv/kick.c:126 modules/chanserv/mark.c:55
+#: modules/chanserv/op.c:63 modules/chanserv/op.c:138
+#: modules/chanserv/owner.c:69 modules/chanserv/owner.c:150
+#: modules/chanserv/protect.c:69 modules/chanserv/protect.c:150
+#: modules/chanserv/quiet.c:141 modules/chanserv/quiet.c:233
+#: modules/chanserv/recover.c:55 modules/chanserv/set_email.c:44
+#: modules/chanserv/set_entrymsg.c:43 modules/chanserv/set_fantasy.c:58
+#: modules/chanserv/set_founder.c:80 modules/chanserv/set_gameserv.c:45
+#: modules/chanserv/set_guard.c:58 modules/chanserv/set_keeptopic.c:43
+#: modules/chanserv/set_limitflags.c:47 modules/chanserv/set_mlock.c:58
+#: modules/chanserv/set_prefix.c:72 modules/chanserv/set_private.c:47
+#: modules/chanserv/set_property.c:61 modules/chanserv/set_restricted.c:43
+#: modules/chanserv/set_secure.c:43 modules/chanserv/set_topiclock.c:43
+#: modules/chanserv/set_url.c:44 modules/chanserv/set_verbose.c:43
+#: modules/chanserv/status.c:50 modules/chanserv/template.c:94
+#: modules/chanserv/topic.c:62 modules/chanserv/topic.c:126
+#: modules/chanserv/topic.c:201 modules/chanserv/unban_self.c:68
+#: modules/chanserv/voice.c:63 modules/chanserv/voice.c:131
+#: modules/chanserv/why.c:70 modules/chanserv/xop.c:102
+#: modules/chanserv/xop.c:419 modules/gameserv/dice.c:87
 #, c-format
 msgid "Channel %s is not registered."
 msgstr "El canal %s no está registrado."
@@ -155,7 +155,7 @@ msgstr "%s se encuentra actualmente vacío."
 #: modules/chanserv/template.c:153 modules/chanserv/unban_self.c:80
 #: modules/chanserv/xop.c:94 modules/contrib/ns_listlogins.c:39
 #: modules/groupserv/basecmds.c:82 modules/groupserv/basecmds.c:230
-#: modules/groupserv/basecmds.c:302 modules/groupserv/basecmds.c:582
+#: modules/groupserv/basecmds.c:303 modules/groupserv/basecmds.c:583
 #: modules/groupserv/set.c:124 modules/groupserv/set.c:174
 #: modules/groupserv/set.c:221 modules/groupserv/set.c:268
 #: modules/groupserv/set.c:321 modules/groupserv/set.c:389
@@ -166,8 +166,8 @@ msgstr "%s se encuentra actualmente vacío."
 #: modules/infoserv/main.c:271 modules/memoserv/delete.c:61
 #: modules/memoserv/forward.c:63 modules/memoserv/ignore.c:77
 #: modules/memoserv/list.c:48 modules/memoserv/read.c:61
-#: modules/memoserv/send.c:61 modules/memoserv/sendgroup.c:63
-#: modules/memoserv/sendops.c:62 modules/nickserv/access.c:215
+#: modules/memoserv/send.c:62 modules/memoserv/sendgroup.c:64
+#: modules/memoserv/sendops.c:63 modules/nickserv/access.c:215
 #: modules/nickserv/access.c:267 modules/nickserv/access.c:393
 #: modules/nickserv/cert.c:54 modules/nickserv/cert.c:109
 #: modules/nickserv/cert.c:145 modules/nickserv/enforce.c:102
@@ -183,19 +183,20 @@ msgstr "Ud. no ha iniciado sesión."
 #: modules/botserv/bottalk.c:73 modules/botserv/bottalk.c:127
 #: modules/botserv/info.c:100 modules/botserv/set_fantasy.c:82
 #: modules/botserv/set_nobot.c:67 modules/botserv/set_private.c:72
-#: modules/chanserv/access.c:603 modules/chanserv/access.c:680
-#: modules/chanserv/access.c:774 modules/chanserv/access.c:850
-#: modules/chanserv/access.c:929 modules/chanserv/access.c:1047
-#: modules/chanserv/access.c:1095 modules/chanserv/akick.c:104
-#: modules/chanserv/akick.c:197 modules/chanserv/akick.c:253
-#: modules/chanserv/ban.c:73 modules/chanserv/ban.c:163
-#: modules/chanserv/clear_bans.c:80 modules/chanserv/clear_users.c:67
-#: modules/chanserv/count.c:66 modules/chanserv/drop.c:93
-#: modules/chanserv/flags.c:139 modules/chanserv/getkey.c:60
-#: modules/chanserv/halfop.c:75 modules/chanserv/halfop.c:103
-#: modules/chanserv/halfop.c:156 modules/chanserv/invite.c:73
-#: modules/chanserv/kick.c:64 modules/chanserv/kick.c:132
-#: modules/chanserv/op.c:69 modules/chanserv/op.c:97 modules/chanserv/op.c:144
+#: modules/chanserv/access.c:568 modules/chanserv/access.c:645
+#: modules/chanserv/access.c:739 modules/chanserv/access.c:816
+#: modules/chanserv/access.c:899 modules/chanserv/access.c:1023
+#: modules/chanserv/access.c:1103 modules/chanserv/access.c:1182
+#: modules/chanserv/akick.c:104 modules/chanserv/akick.c:197
+#: modules/chanserv/akick.c:253 modules/chanserv/ban.c:73
+#: modules/chanserv/ban.c:163 modules/chanserv/clear_bans.c:80
+#: modules/chanserv/clear_users.c:67 modules/chanserv/count.c:66
+#: modules/chanserv/drop.c:93 modules/chanserv/flags.c:139
+#: modules/chanserv/getkey.c:60 modules/chanserv/halfop.c:75
+#: modules/chanserv/halfop.c:103 modules/chanserv/halfop.c:156
+#: modules/chanserv/invite.c:73 modules/chanserv/kick.c:64
+#: modules/chanserv/kick.c:132 modules/chanserv/op.c:69
+#: modules/chanserv/op.c:97 modules/chanserv/op.c:144
 #: modules/chanserv/owner.c:75 modules/chanserv/owner.c:103
 #: modules/chanserv/owner.c:156 modules/chanserv/protect.c:75
 #: modules/chanserv/protect.c:103 modules/chanserv/protect.c:156
@@ -209,7 +210,7 @@ msgstr "Ud. no ha iniciado sesión."
 #: modules/chanserv/xop.c:162 modules/chanserv/xop.c:176
 #: modules/chanserv/xop.c:431 modules/contrib/cs_userinfo.c:73
 #: modules/contrib/cs_userinfo.c:98 modules/gameserv/dice.c:128
-#: modules/groupserv/basecmds.c:308 modules/memoserv/sendops.c:113
+#: modules/groupserv/basecmds.c:309 modules/memoserv/sendops.c:114
 #: modules/nickserv/sendpass_user.c:60 modules/operserv/soper.c:65
 #: src/commandtree.c:71
 msgid "You are not authorized to perform this operation."
@@ -393,8 +394,8 @@ msgid "Syntax: ASSIGN <#channel> <nick>"
 msgstr "Sintaxis: ASSIGN <#canal> <nick>"
 
 #: modules/botserv/main.c:809 modules/botserv/main.c:886
-#: modules/chanserv/access.c:691 modules/chanserv/access.c:784
-#: modules/chanserv/access.c:866 modules/chanserv/access.c:939
+#: modules/chanserv/access.c:656 modules/chanserv/access.c:749
+#: modules/chanserv/access.c:826 modules/chanserv/access.c:909
 #: modules/chanserv/fflags.c:86 modules/chanserv/flags.c:192
 #: modules/chanserv/flags.c:263 modules/chanserv/ftransfer.c:52
 #: modules/chanserv/set_founder.c:74 modules/contrib/cs_userinfo.c:57
@@ -429,13 +430,13 @@ msgid "You cannot assign bots to %s."
 msgstr "Ud. no puede asignar bots en %s."
 
 #: modules/botserv/main.c:827
-#, c-format
-msgid "You are not authorised to assign bots on %s."
+#, fuzzy, c-format
+msgid "You are not authorized to assign bots on %s."
 msgstr "Ud. no está autorizado a asignar bots en %s."
 
 #: modules/botserv/main.c:842
-#, c-format
-msgid "You are not authorised to assign the bot %s to a channel."
+#, fuzzy, c-format
+msgid "You are not authorized to assign the bot %s to a channel."
 msgstr "Ud. no está autorizado a asignar el bot %s a un canal."
 
 #: modules/botserv/main.c:848
@@ -453,8 +454,8 @@ msgid "Syntax: UNASSIGN <#channel>"
 msgstr "Sintaxis: UNASSIGN <#canal>"
 
 #: modules/botserv/main.c:892
-#, c-format
-msgid "You are not authorised to unassign a bot on %s."
+#, fuzzy, c-format
+msgid "You are not authorized to unassign a bot on %s."
 msgstr "Ud. no está autorizado a desasignar un bot de %s."
 
 #: modules/botserv/main.c:910
@@ -485,8 +486,8 @@ msgstr "Para ayuda más específica vea /msg %s HELP SET comando."
 msgid "Syntax: SET <destination> <setting> <parameters>"
 msgstr "Sintaxis: SET <destino> <ajuste> <parámetros>"
 
-#: modules/botserv/set_core.c:79 modules/chanserv/access.c:165
-#: modules/chanserv/access.c:205 modules/chanserv/akick.c:290
+#: modules/botserv/set_core.c:79 modules/chanserv/access.c:167
+#: modules/chanserv/access.c:207 modules/chanserv/akick.c:290
 #: modules/chanserv/clear.c:85 modules/chanserv/set_core.c:87
 #: modules/groupserv/set.c:103 modules/memoserv/ignore.c:84
 #: modules/operserv/akill.c:109 modules/operserv/clones.c:395
@@ -581,8 +582,9 @@ msgid "Add an access list entry."
 msgstr "Agrega una entrada de lista de acceso."
 
 #: modules/chanserv/access.c:52
-msgid "Change an access list entry."
-msgstr "Cambia una entrada de lista de acceso."
+#, fuzzy
+msgid "Update an access list entry."
+msgstr "Agrega una entrada de lista de acceso."
 
 #: modules/chanserv/access.c:57
 msgid "List available roles."
@@ -592,189 +594,211 @@ msgstr "Muestra roles disponibles."
 msgid "Add a role."
 msgstr "Agrega un rol."
 
-#: modules/chanserv/access.c:65
+#: modules/chanserv/access.c:67
 msgid "Change flags on a role."
 msgstr "Cambia las opciones de un rol."
 
-#: modules/chanserv/access.c:70
+#: modules/chanserv/access.c:72
 msgid "Delete a role."
 msgstr "Elimina un rol."
 
-#: modules/chanserv/access.c:110
+#: modules/chanserv/access.c:112
 msgid "Help for ACCESS:"
 msgstr "Ayuda para ACCESS:"
 
-#: modules/chanserv/access.c:114
+#: modules/chanserv/access.c:116
 #, c-format
 msgid "For more information, use /msg %s HELP ACCESS command."
 msgstr "Para mayor información, vea /msg %s HELP ACCESS comando."
 
-#: modules/chanserv/access.c:126
+#: modules/chanserv/access.c:128
 msgid "Help for ROLE:"
 msgstr "Ayuda para ROLE:"
 
-#: modules/chanserv/access.c:130
+#: modules/chanserv/access.c:132
 #, c-format
 msgid "For more information, use /msg %s HELP ROLE command."
 msgstr "Para mayor información, vea /msg %s HELP ROLE comando."
 
-#: modules/chanserv/access.c:147 modules/chanserv/access.c:158
+#: modules/chanserv/access.c:149 modules/chanserv/access.c:160
 msgid "Syntax: ACCESS <#channel> <command> [parameters]"
 msgstr "Sintaxis: ACCESS <#canal> <comando> [parámetros]"
 
-#: modules/chanserv/access.c:187 modules/chanserv/access.c:198
+#: modules/chanserv/access.c:189 modules/chanserv/access.c:200
 msgid "Syntax: ROLE <#channel> <command> [parameters]"
 msgstr "Sintaxis: ROLE <#canal> <comando> [parámetros]"
 
-#: modules/chanserv/access.c:509 modules/chanserv/template.c:185
+#: modules/chanserv/access.c:473 modules/chanserv/template.c:185
 #: modules/chanserv/template.c:322
 #, c-format
 msgid "Invalid template name %s."
 msgstr "Nombre de plantilla no válido %s."
 
-#: modules/chanserv/access.c:515 modules/chanserv/template.c:340
+#: modules/chanserv/access.c:479 modules/chanserv/template.c:340
 #, c-format
 msgid "Sorry, too many templates on %s."
 msgstr "Demasiadas plantillas en %s."
 
-#: modules/chanserv/access.c:545 modules/chanserv/template.c:380
+#: modules/chanserv/access.c:510 modules/chanserv/template.c:380
 #, c-format
 msgid "%d access entries updated accordingly."
 msgstr "%d entradas de acceso han sido actualizadas en consecuencia."
 
-#: modules/chanserv/access.c:608
+#: modules/chanserv/access.c:573
 msgid "Entry Nickname/Host          Role"
 msgstr "Ent.  Nick/Host              Rol"
 
-#: modules/chanserv/access.c:622
+#: modules/chanserv/access.c:587
 #, c-format
 msgid "%-5d %-22s %s"
 msgstr "%-5d %-22s %s"
 
-#: modules/chanserv/access.c:628
+#: modules/chanserv/access.c:593
 #, c-format
 msgid "End of %s ACCESS listing."
 msgstr "Fin de la lista ACCESS para %s."
 
-#: modules/chanserv/access.c:670
+#: modules/chanserv/access.c:635
 msgid "Syntax: ACCESS <#channel> INFO <account|hostmask>"
 msgstr "Sintaxis: ACCESS <#canal> INFO <cuenta|máscara de host>"
 
-#: modules/chanserv/access.c:700 modules/chanserv/access.c:795
+#: modules/chanserv/access.c:665 modules/chanserv/access.c:760
 #, c-format
 msgid "No ACL entry for %s in %s was found."
 msgstr "No hay entradas de acceso para %s en %s."
 
-#: modules/chanserv/access.c:715
+#: modules/chanserv/access.c:680
 #, c-format
 msgid "Access for %s in %s:"
 msgstr "Acceso de %s en %s:"
 
-#: modules/chanserv/access.c:721
+#: modules/chanserv/access.c:686
 #, c-format
 msgid "Ban reason : %s"
 msgstr "Razón de veto : %s"
 
-#: modules/chanserv/access.c:725
+#: modules/chanserv/access.c:690
 #, c-format
 msgid "Role       : %s (inherited from %s)"
 msgstr "Rol        : %s (heredado de %s)"
 
-#: modules/chanserv/access.c:727
+#: modules/chanserv/access.c:692
 #, c-format
 msgid "Role       : %s"
 msgstr "Rol           : %s"
 
-#: modules/chanserv/access.c:729
+#: modules/chanserv/access.c:694
 #, c-format
 msgid "Flags      : %s (%s)"
 msgstr "Opciones      : %s (%s)"
 
-#: modules/chanserv/access.c:730
+#: modules/chanserv/access.c:695
 #, c-format
 msgid "Modified   : %s (%s ago)"
 msgstr "Modificado    : %s (hace %s)"
 
-#: modules/chanserv/access.c:731 modules/nickserv/info.c:396
+#: modules/chanserv/access.c:696 modules/nickserv/info.c:396
 #: modules/operserv/modinspect.c:70
 msgid "*** End of Info ***"
 msgstr "*** Fin de Información ***"
 
-#: modules/chanserv/access.c:765
+#: modules/chanserv/access.c:730
 msgid "Syntax: ACCESS <#channel> DEL <account|hostmask>"
 msgstr "Sintaxis: ACCESS <#canal> DEL <cuenta|máscara de host>"
 
-#: modules/chanserv/access.c:801 modules/chanserv/fflags.c:98
-#: modules/chanserv/flags.c:277
+#: modules/chanserv/access.c:766 modules/chanserv/access.c:934
+#: modules/chanserv/fflags.c:98 modules/chanserv/flags.c:277
 msgid "You may not remove the last founder."
 msgstr "No puede quitar al último fundador."
 
-#: modules/chanserv/access.c:810
+#: modules/chanserv/access.c:775
 #, c-format
 msgid "%s was removed from the %s role in %s."
 msgstr "%s ha sido quitado del rol %s en %s."
 
-#: modules/chanserv/access.c:841
+#: modules/chanserv/access.c:807
 msgid "Syntax: ACCESS <#channel> ADD <account|hostmask> <role>"
 msgstr "Sintaxis: ACCESS <#canal> ADD <cuenta|máscara de host> <rol>"
 
-#: modules/chanserv/access.c:856 modules/chanserv/access.c:884
-#: modules/chanserv/access.c:1102
-#, c-format
-msgid "Role %s does not exist."
-msgstr "El rol %s no existe."
-
-#: modules/chanserv/access.c:876 modules/chanserv/access.c:949
-#: modules/chanserv/akick.c:141 modules/chanserv/akick.c:174
-#: modules/chanserv/flags.c:312 modules/chanserv/flags.c:335
-#: modules/chanserv/set_founder.c:110 modules/chanserv/set_founder.c:192
-#: modules/chanserv/xop.c:238 modules/chanserv/xop.c:301
+#: modules/chanserv/access.c:836 modules/chanserv/akick.c:141
+#: modules/chanserv/akick.c:174 modules/chanserv/flags.c:312
+#: modules/chanserv/flags.c:335 modules/chanserv/set_founder.c:110
+#: modules/chanserv/set_founder.c:192 modules/chanserv/xop.c:238
+#: modules/chanserv/xop.c:301
 #, c-format
 msgid "Channel %s access list is full."
 msgstr "La lista de acceso del canal %s está llena."
 
-#: modules/chanserv/access.c:890
+#: modules/chanserv/access.c:843
+#, fuzzy, c-format
+msgid "%s already has the %s role in %s."
+msgstr "%s ahora tiene el rol %s en %s."
+
+#: modules/chanserv/access.c:851 modules/chanserv/access.c:928
+#: modules/chanserv/access.c:1112 modules/chanserv/access.c:1189
+#, c-format
+msgid "Role %s does not exist."
+msgstr "El rol %s no existe."
+
+#: modules/chanserv/access.c:858
 #, c-format
 msgid "%s was added with the %s role in %s."
 msgstr "%s ha sido agregado con el rol %s a %s."
 
-#: modules/chanserv/access.c:923
-msgid "Syntax: ACCESS <#channel> SET <account|hostmask> <role|flags>"
+#: modules/chanserv/access.c:890
+#, fuzzy
+msgid "Syntax: ACCESS <#channel> SET <account|hostmask> <role>"
 msgstr "Sintaxis: ACCESS <#canal> SET <cuenta|máscara de host> <rol|permisos>"
 
-#: modules/chanserv/access.c:957
+#: modules/chanserv/access.c:919
+#, fuzzy, c-format
+msgid "Channel %s access list is full."
+msgstr "La lista de acceso del canal %s está llena."
+
+#: modules/chanserv/access.c:942
 #, c-format
 msgid "%s now has the %s role in %s."
 msgstr "%s ahora tiene el rol %s en %s."
 
-#: modules/chanserv/access.c:964
-#, c-format
-msgid "%s now has the following flags in %s: %s"
-msgstr "%s ahora tiene las siguientes permisos en %s: %s"
-
-#: modules/chanserv/access.c:1004
+#: modules/chanserv/access.c:979
 msgid "List of channel-defined roles:"
 msgstr "Lista de roles definidos por el canal:"
 
-#: modules/chanserv/access.c:1041
+#: modules/chanserv/access.c:1017 modules/chanserv/access.c:1097
 msgid "Syntax: ROLE <#channel> ADD|SET <role> [flags]"
 msgstr "Sintaxis: ROLE <#canal> ADD|SET <rol> [permisos]"
 
-#: modules/chanserv/access.c:1057
+#: modules/chanserv/access.c:1032
+#, fuzzy, c-format
+msgid "Role %s already exists."
+msgstr "%s ya se encuentra registrado."
+
+#: modules/chanserv/access.c:1044 modules/chanserv/access.c:1124
+#, fuzzy, c-format
+msgid "No valid flags given, use /%s%s HELP ROLE ADD for a list"
+msgstr ""
+"Permisos no válidos, vea /%s%s HELP FLAGS para una lista de permisos válidos"
+
+#: modules/chanserv/access.c:1046 modules/chanserv/access.c:1126
 #, c-format
 msgid "You cannot remove all flags from the role %s."
 msgstr "No puede quitar todos los permisos del rol %s."
 
-#: modules/chanserv/access.c:1061
+#: modules/chanserv/access.c:1060 modules/chanserv/access.c:1140
+#, fuzzy, c-format
+msgid "The role %s already has flags %s."
+msgstr "%s ya tiene los permisos %s en %s"
+
+#: modules/chanserv/access.c:1068 modules/chanserv/access.c:1148
 #, c-format
 msgid "Flags for role %s were changed to: %s."
 msgstr "Los permisos del rol %s han cambiado a: %s."
 
-#: modules/chanserv/access.c:1089
+#: modules/chanserv/access.c:1176
 msgid "Syntax: ROLE <#channel> DEL <role>"
 msgstr "Sintaxis: ROLE <#canal> DEL <rol>"
 
-#: modules/chanserv/access.c:1106
+#: modules/chanserv/access.c:1193
 #, c-format
 msgid "Role %s has been deleted."
 msgstr "El rol %s ha sido eliminado."
@@ -1151,7 +1175,7 @@ msgstr "%-5d %-22s %s (%s) [modificado hace %s]"
 msgid "%-5d %-22s %s [modified %s ago]"
 msgstr "%-5d %-22s %s [modificado hace %s]"
 
-#: modules/chanserv/flags.c:162 modules/groupserv/basecmds.c:331
+#: modules/chanserv/flags.c:162 modules/groupserv/basecmds.c:332
 #, c-format
 msgid "End of %s FLAGS listing."
 msgstr "Fin de la lista FLAGS para %s."
@@ -1196,7 +1220,7 @@ msgid "%s has too many channels registered."
 msgstr "%s ha registrado demasiados canales."
 
 #: modules/chanserv/flags.c:305 modules/chanserv/xop.c:286
-#: modules/groupserv/basecmds.c:402
+#: modules/groupserv/basecmds.c:403
 #, c-format
 msgid "%s does not wish to be added to channel access lists (NEVEROP set)."
 msgstr "%s no desea ser agregado a listas de acceso (NEVEROP activado)."
@@ -2448,18 +2472,18 @@ msgstr "Explica la lógica de acceso al canal."
 msgid "Syntax: WHY <channel> [user]"
 msgstr "Sintaxis: WHY <canal> [usuario]"
 
-#: modules/chanserv/why.c:152 modules/chanserv/why.c:156
+#: modules/chanserv/why.c:155 modules/chanserv/why.c:159
 #, c-format
 msgid "The %s flag is set for %s, therefore no status will be given."
 msgstr ""
 "La opción %s está activada para %s, por lo tanto no se le concederá un "
 "estado."
 
-#: modules/chanserv/why.c:161
+#: modules/chanserv/why.c:164
 msgid "+r exempts from +b."
 msgstr "+r exime de +b."
 
-#: modules/chanserv/why.c:163
+#: modules/chanserv/why.c:166
 #, c-format
 msgid "%s has no special access to %s."
 msgstr "%s no tiene acceso especial a %s."
@@ -3070,7 +3094,7 @@ msgid "Syntax: INFO <!groupname>"
 msgstr "Sintaxis: INFO <!nombregrupo>"
 
 #: modules/groupserv/basecmds.c:119 modules/groupserv/basecmds.c:236
-#: modules/groupserv/basecmds.c:576 modules/groupserv/basecmds.c:634
+#: modules/groupserv/basecmds.c:577 modules/groupserv/basecmds.c:635
 #: modules/groupserv/set.c:118 modules/groupserv/set.c:168
 #: modules/groupserv/set.c:215 modules/groupserv/set.c:262
 #, c-format
@@ -3139,143 +3163,154 @@ msgid "Drops a group registration."
 msgstr "Anula el registro de un grupo."
 
 #: modules/groupserv/basecmds.c:217 modules/groupserv/basecmds.c:224
-#: modules/groupserv/basecmds.c:621 modules/groupserv/basecmds.c:628
+#: modules/groupserv/basecmds.c:622 modules/groupserv/basecmds.c:629
 msgid "Syntax: DROP <!group>"
 msgstr "Sintaxis: DROP <!grupo>"
 
-#: modules/groupserv/basecmds.c:270 modules/groupserv/basecmds.c:641
+#: modules/groupserv/basecmds.c:271 modules/groupserv/basecmds.c:643
 #, c-format
 msgid "The group %s has been dropped."
 msgstr "El grupo %s ha sido eliminado."
 
-#: modules/groupserv/basecmds.c:276
+#: modules/groupserv/basecmds.c:277
 msgid "Sets flags on a user in a group."
 msgstr "Establece permisos para un usuario en un grupo."
 
-#: modules/groupserv/basecmds.c:290
+#: modules/groupserv/basecmds.c:291
 msgid "Syntax: FLAGS <!group> [user] [changes]"
 msgstr "Sintaxis: FLAGS <!grupo> [usuario] [permisos]"
 
-#: modules/groupserv/basecmds.c:296 modules/groupserv/basecmds.c:463
-#: modules/groupserv/basecmds.c:519 modules/groupserv/set.c:315
+#: modules/groupserv/basecmds.c:297 modules/groupserv/basecmds.c:464
+#: modules/groupserv/basecmds.c:520 modules/groupserv/set.c:315
 #: modules/groupserv/set.c:383
 #, c-format
 msgid "The group %s does not exist."
 msgstr "El grupo %s no existe."
 
-#: modules/groupserv/basecmds.c:317
+#: modules/groupserv/basecmds.c:318
 msgid "Entry Account                Flags"
 msgstr "Ent.  Cuenta                 Permisos"
 
-#: modules/groupserv/basecmds.c:338 modules/nickserv/main.c:30
+#: modules/groupserv/basecmds.c:339 modules/nickserv/main.c:30
 #: modules/operserv/override.c:200
 #, c-format
 msgid "%s is not a registered account."
 msgstr "%s no es una cuenta registrada."
 
-#: modules/groupserv/basecmds.c:345
+#: modules/groupserv/basecmds.c:346
 msgid "Syntax: FLAGS <!group> <user> <changes>"
 msgstr "Sintaxis: FLAGS <!grupo> <usuario> <permisos>"
 
-#: modules/groupserv/basecmds.c:426
+#: modules/groupserv/basecmds.c:427
 #, c-format
 msgid "%s has been removed from %s."
 msgstr "%s ha sido eliminado de %s."
 
-#: modules/groupserv/basecmds.c:434 modules/groupserv/basecmds.c:600
+#: modules/groupserv/basecmds.c:435 modules/groupserv/basecmds.c:601
 #, c-format
 msgid "Group %s access list is full."
 msgstr "La lista de acceso de %s está llena."
 
-#: modules/groupserv/basecmds.c:440
+#: modules/groupserv/basecmds.c:441
 #, c-format
 msgid "%s now has flags %s on %s."
 msgstr "%s ahora tiene los permisos %s en %s"
 
-#: modules/groupserv/basecmds.c:448
+#: modules/groupserv/basecmds.c:449
 msgid "Allow a group to bypass registration limits."
 msgstr "Permite a un grupo ignorar límites de registro."
 
-#: modules/groupserv/basecmds.c:457 modules/groupserv/basecmds.c:498
+#: modules/groupserv/basecmds.c:458 modules/groupserv/basecmds.c:499
 msgid "Syntax: REGNOLIMIT <!group> <ON|OFF>"
 msgstr "Sintaxis: REGNOLIMIT <!grupo> <ON|OFF>"
 
-#: modules/groupserv/basecmds.c:471 modules/nickserv/regnolimit.c:55
+#: modules/groupserv/basecmds.c:472 modules/nickserv/regnolimit.c:55
 #, c-format
 msgid "%s can already bypass registration limits."
 msgstr "%s ya puede ignorar límites de registro."
 
-#: modules/groupserv/basecmds.c:479 modules/nickserv/regnolimit.c:63
+#: modules/groupserv/basecmds.c:480 modules/nickserv/regnolimit.c:63
 #, c-format
 msgid "%s can now bypass registration limits."
 msgstr "%s puede ahora ignorar límites de registro."
 
-#: modules/groupserv/basecmds.c:485 modules/nickserv/regnolimit.c:69
+#: modules/groupserv/basecmds.c:486 modules/nickserv/regnolimit.c:69
 #, c-format
 msgid "%s cannot bypass registration limits."
 msgstr "%s no puede ignorar límites de registro."
 
-#: modules/groupserv/basecmds.c:493 modules/nickserv/regnolimit.c:77
+#: modules/groupserv/basecmds.c:494 modules/nickserv/regnolimit.c:77
 #, c-format
 msgid "%s cannot bypass registration limits anymore."
 msgstr "%s ya no puede ignorar límites de registro."
 
-#: modules/groupserv/basecmds.c:504
+#: modules/groupserv/basecmds.c:505
 msgid "Allow a group to bypass access list limits."
 msgstr "Permite a un grupo ignorar límites de lista de acceso."
 
-#: modules/groupserv/basecmds.c:513 modules/groupserv/basecmds.c:554
+#: modules/groupserv/basecmds.c:514 modules/groupserv/basecmds.c:555
 msgid "Syntax: ACSNOLIMIT <!group> <ON|OFF>"
 msgstr "Sintaxis: ACSNOLIMIT <!grupo> <ON|OFF>"
 
-#: modules/groupserv/basecmds.c:527
+#: modules/groupserv/basecmds.c:528
 #, c-format
 msgid "%s can already bypass access list limits."
 msgstr "%s ya se puede ignorar límites de listas de acceso."
 
-#: modules/groupserv/basecmds.c:535
+#: modules/groupserv/basecmds.c:536
 #, c-format
 msgid "%s can now bypass access list limits."
 msgstr "%s puede ahora ignorar límites de listas de acceso."
 
-#: modules/groupserv/basecmds.c:541
+#: modules/groupserv/basecmds.c:542
 #, c-format
 msgid "%s cannot bypass access list limits."
 msgstr "%s no puede ignorar límites de listas de acceso."
 
-#: modules/groupserv/basecmds.c:549
+#: modules/groupserv/basecmds.c:550
 #, c-format
 msgid "%s cannot bypass access list limits anymore."
 msgstr "%s ya no puede ignorar límites de lista de acceso."
 
-#: modules/groupserv/basecmds.c:560
+#: modules/groupserv/basecmds.c:561
 msgid "Join a open group."
 msgstr "Se une a un grupo abierto."
 
-#: modules/groupserv/basecmds.c:570
+#: modules/groupserv/basecmds.c:571
 msgid "Syntax: JOIN <!groupname>"
 msgstr "Sintaxis: JOIN <!nombregrupo>"
 
-#: modules/groupserv/basecmds.c:588
+#: modules/groupserv/basecmds.c:589
 #, c-format
 msgid "Group %s is not open to anyone joining."
 msgstr "El grupo %s no se encuentra abierto."
 
-#: modules/groupserv/basecmds.c:594
+#: modules/groupserv/basecmds.c:595
 #, c-format
 msgid "You are already a member of group %s."
 msgstr "Ud. ya es miembro de %s."
 
-#: modules/groupserv/basecmds.c:606
+#: modules/groupserv/basecmds.c:607
 #, c-format
 msgid "You are now a member of %s."
 msgstr "Ud. es ahora miembro de %s."
 
-#: modules/groupserv/basecmds.c:611
+#: modules/groupserv/basecmds.c:612
 msgid "Force drops a group registration."
 msgstr "Fuerza la anulación del registro de un grupo."
 
-#: modules/groupserv/hooks.c:129
+#: modules/groupserv/groupserv.c:252 src/account.c:210
+#, c-format
+msgid "SUCCESSION: %s to %s from %s"
+msgstr "SUCESIÓN: %s a %s de %s"
+
+#: modules/groupserv/groupserv.c:269 src/account.c:227 src/account.c:278
+#: src/account.c:290
+#, c-format
+msgid "DELETE: %s from %s"
+msgstr "DELETE: %s de %s"
+
+#: modules/groupserv/hooks.c:132
 #, c-format
 msgid "Groups     : %s"
 msgstr "Grupos       : %s"
@@ -3806,8 +3841,8 @@ msgstr "%d memos eliminados."
 msgid "Forwards a memo."
 msgstr "Redirige un memo."
 
-#: modules/memoserv/forward.c:69 modules/memoserv/send.c:67
-#: modules/memoserv/sendgroup.c:69 modules/memoserv/sendops.c:68
+#: modules/memoserv/forward.c:69 modules/memoserv/send.c:68
+#: modules/memoserv/sendgroup.c:70 modules/memoserv/sendops.c:69
 msgid "You need to verify your email address before you may send memos."
 msgstr ""
 "Ud. necesita confirmar su dirección de email antes de poder enviar memos."
@@ -3838,7 +3873,7 @@ msgstr ""
 msgid "The memo has been successfully forwarded to %s."
 msgstr "El memo ha sido redirigido a %s exitosamente."
 
-#: modules/memoserv/forward.c:193 modules/memoserv/send.c:179
+#: modules/memoserv/forward.c:193 modules/memoserv/send.c:183
 #, c-format
 msgid ""
 "%s is currently online, and you may talk directly, by sending a private "
@@ -3847,8 +3882,8 @@ msgstr ""
 "%s se encuentra en línea, y puede hablar directamente enviándole un mensaje "
 "privado."
 
-#: modules/memoserv/forward.c:199 modules/memoserv/send.c:185
-#: modules/memoserv/sendgroup.c:174 modules/memoserv/sendops.c:185
+#: modules/memoserv/forward.c:199 modules/memoserv/send.c:190
+#: modules/memoserv/sendgroup.c:179 modules/memoserv/sendops.c:190
 #, c-format
 msgid "To read it, type /%s%s READ %zu"
 msgstr "Para leerlo, escriba /%s%s READ %zu"
@@ -4003,34 +4038,34 @@ msgstr "%d memos leídos."
 msgid "Sends a memo to a user."
 msgstr "Envía un memo a un usuario."
 
-#: modules/memoserv/send.c:76 modules/memoserv/sendgroup.c:78
-#: modules/memoserv/sendops.c:77
+#: modules/memoserv/send.c:77 modules/memoserv/sendgroup.c:79
+#: modules/memoserv/sendops.c:78
 msgid ""
 "You have used this command too many times; please wait a while and try again."
 msgstr ""
 "Ud. ha usado este comando demasiadas veces; por favor espere unos instantes "
 "e inténtelo nuevamente."
 
-#: modules/memoserv/send.c:94 modules/memoserv/sendgroup.c:96
-#: modules/memoserv/sendops.c:95
+#: modules/memoserv/send.c:95 modules/memoserv/sendgroup.c:97
+#: modules/memoserv/sendops.c:96
 msgid "Your memo contains invalid characters."
 msgstr "Su memo contiene caracteres no válidos."
 
-#: modules/memoserv/send.c:124
+#: modules/memoserv/send.c:129
 #, c-format
 msgid "%s's inbox is full"
 msgstr "La bandeja de entrada de %s está llena"
 
-#: modules/memoserv/send.c:146 modules/memoserv/send.c:189
+#: modules/memoserv/send.c:151 modules/memoserv/send.c:194
 #, c-format
 msgid "The memo has been successfully sent to %s."
 msgstr "El memo ha sido enviado a %s con éxito."
 
-#: modules/memoserv/send.c:197
+#: modules/memoserv/send.c:202
 msgid "Channel memos are administratively disabled."
 msgstr "Los memos de canal han sido desactivados por la administración."
 
-#: modules/memoserv/send.c:205
+#: modules/memoserv/send.c:210
 msgid "Group memos are administratively disabled."
 msgstr "Los memos de grupo han sido desactivados por la administración."
 
@@ -4038,11 +4073,11 @@ msgstr "Los memos de grupo han sido desactivados por la administración."
 msgid "Sends a memo to all members on a group."
 msgstr "Envia un memo a todos los miembros de un grupo."
 
-#: modules/memoserv/sendgroup.c:55
+#: modules/memoserv/sendgroup.c:56
 msgid "Syntax: SENDGROUP <group> <memo>"
 msgstr "Sintaxis: SENDGROUP <grupo> <memo>"
 
-#: modules/memoserv/sendgroup.c:187
+#: modules/memoserv/sendgroup.c:192
 #, c-format
 msgid "The memo has been successfully sent to %d members on %s."
 msgstr "El memo ha sido enviado a %d miembros de %s con éxito."
@@ -4051,7 +4086,7 @@ msgstr "El memo ha sido enviado a %d miembros de %s con éxito."
 msgid "Sends a memo to all ops on a channel."
 msgstr "Envia un memo a todos los operadores de un canal."
 
-#: modules/memoserv/sendops.c:198
+#: modules/memoserv/sendops.c:203
 #, c-format
 msgid "The memo has been successfully sent to %d ops on %s."
 msgstr "El memo ha sido enviado a %d operadores de %s con éxito."
@@ -6502,7 +6537,8 @@ msgstr "Módulo %s cargado."
 msgid "Module %s failed to load."
 msgstr "No se pudo cargar el módulo %s."
 
-#: modules/operserv/modload.c:76 modules/operserv/rehash.c:48 src/signal.c:165
+#: modules/operserv/modload.c:77 modules/operserv/modreload.c:82
+#: modules/operserv/rehash.c:48 src/signal.c:165
 #, c-format
 msgid ""
 "REHASH of %s failed. Please correct any errors in the file and try again."
@@ -7275,16 +7311,6 @@ msgstr "Canales registrados: %d"
 msgid "Users currently online: %d"
 msgstr "Usuarios no actualmente en línea: %d"
 
-#: src/account.c:210
-#, c-format
-msgid "SUCCESSION: %s to %s from %s"
-msgstr "SUCESIÓN: %s a %s de %s"
-
-#: src/account.c:227 src/account.c:278 src/account.c:290
-#, c-format
-msgid "DELETE: %s from %s"
-msgstr "DELETE: %s de %s"
-
 #: src/account.c:838
 #, c-format
 msgid ""
@@ -7506,6 +7532,12 @@ msgstr "SIGUSR2 recibida; reiniciando."
 #, c-format
 msgid "user_find(): found user %s by nick!"
 msgstr "user_find(): encontrado usuario %s por nick!"
+
+#~ msgid "Change an access list entry."
+#~ msgstr "Cambia una entrada de lista de acceso."
+
+#~ msgid "%s now has the following flags in %s: %s"
+#~ msgstr "%s ahora tiene las siguientes permisos en %s: %s"
 
 #~ msgid "DATABASE ERROR: db_save(): cannot create atheme.db.new: %s"
 #~ msgstr ""
