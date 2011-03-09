@@ -1,3 +1,22 @@
+Atheme Services 6.0.5 Release Notes
+===================================
+ircd
+- inspircd: Add support for locking mode +H (chanhistory).
+chanserv
+- access: Massive changes to make it work better and have
+  far fewer bugs. Too many to list here.
+gameserv
+- namegen: Make it actually use the optional number parameter.
+groupserv
+- properly remove channel access from a group when 
+  the group is dropped or expires.
+nickserv
+- Fix nickserv/access entries loading from OpenSEX.
+documentation
+- document GroupServ privs in doc/PRIVILEGES.
+other
+- actually fix the --disable-nls stuff.
+
 Atheme Services 6.0.4 Release Notes
 ===================================
 groupserv
