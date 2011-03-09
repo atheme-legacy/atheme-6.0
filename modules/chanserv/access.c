@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2010 William Pitcock <nenolod@atheme.org>.
+ * Copyright (c) 2010 - 2011 William Pitcock <nenolod@atheme.org>.
  * Rights to this code are as documented in doc/LICENSE.
  *
  * ACCESS command implementation for ChanServ.
@@ -49,8 +49,8 @@ command_t cs_access_add =  { "ADD", N_("Add an access list entry."),
 
 static void cs_cmd_access_set(sourceinfo_t *si, int parc, char *parv[]);
 
-command_t cs_access_set =  { "SET", N_("Change an access list entry."),
-                             AC_NONE, 20, cs_cmd_access_set, { .path = "cservice/access_set" } };
+command_t cs_access_set =  { "SET", N_("Update an access list entry."),
+                             AC_NONE, 3, cs_cmd_access_set, { .path = "cservice/access_set" } };
 
 static void cs_cmd_role_list(sourceinfo_t *si, int parc, char *parv[]);
 
@@ -62,8 +62,10 @@ static void cs_cmd_role_add(sourceinfo_t *si, int parc, char *parv[]);
 command_t cs_role_add =  { "ADD", N_("Add a role."),
                             AC_NONE, 20, cs_cmd_role_add, { .path = "cservice/role_add" } };
 
+static void cs_cmd_role_set(sourceinfo_t *si, int parc, char *parv[]);
+
 command_t cs_role_set =  { "SET", N_("Change flags on a role."),
-                            AC_NONE, 20, cs_cmd_role_add, { .path = "cservice/role_set" } };
+                            AC_NONE, 20, cs_cmd_role_set, { .path = "cservice/role_set" } };
 
 static void cs_cmd_role_del(sourceinfo_t *si, int parc, char *parv[]);
 
@@ -93,7 +95,7 @@ void _modinit(module_t *m)
 	command_add(&cs_role_del, cs_role_cmds);
 }
 
-void _moddeinit()
+void _moddeinit(module_unload_intent_t intent)
 {
 	service_named_unbind_command("chanserv", &cs_access);
 	service_named_unbind_command("chanserv", &cs_role);
@@ -245,7 +247,7 @@ static int compare_template_nodes(mowgli_node_t *a, mowgli_node_t *b, void *opaq
 	template_t *ta = a->data;
 	template_t *tb = b->data;
 
-	return count_bits(tb->level) - count_bits(ta->level);
+	return count_bits(ta->level) - count_bits(tb->level);
 }
 
 static int append_global_template(const char *key, void *data, void *privdata)
@@ -255,13 +257,13 @@ static int append_global_template(const char *key, void *data, void *privdata)
 	default_template_t *def_t = data;
 	unsigned int vopflags;
 
-	if (chansvs.hide_xop && *(key + 1) == 'O' && *(key + 2) == 'P')
-		return 0;
+	if (!chansvs.hide_xop)
+	{
+		vopflags = get_global_template_flags("VOP");
 
-	vopflags = get_global_template_flags("VOP");
-
-	if (def_t->flags == vopflags && !strcasecmp(key, "HOP"))
-		return 0;
+		if (def_t->flags == vopflags && !strcasecmp(key, "HOP"))
+			return 0;
+	}
 
 	t = smalloc(sizeof(template_t));
 	strlcpy(t->name, key, sizeof(t->name));
@@ -350,27 +352,29 @@ static void free_template_list(mowgli_list_t *l)
 /*
  * get_template_name()
  *
- * this is, by far, one of the most complicated functions in Atheme.
- * it is also one of the most bloated fuzzy bitmask matchers that i have
+ * this was, by far, one of the most complicated functions in Atheme.
+ * it was also one of the most bloated fuzzy bitmask matchers that i have
  * ever written.
  *
- * basically, we build a template list, which has been sorted and then
+ * basically, we used to build a template list, which has been sorted and then
  * reversed.  we then find three templates that are the closest match to:
  *
  *      - an exact match (level == level)
  *      - the closest template to the level but with less privilege ((level & t->level) == level)
  *      - the closest template to the level but with more privilege ((t->level & level) == t->level)
  *
- * we then count the number of bits in each level and we tighten the match further
- * based on number of bits flipped on in each level.  (it's the only sane way to do
+ * we then counted the number of bits in each level and we tightened the match further
+ * based on number of bits flipped on in each level.  (it was the only sane way to do
  * this, trust me.)
+ *
+ * but now we just return an exact template name or <Custom>.
  */
 static const char *get_template_name(mychan_t *mc, unsigned int level)
 {
 	mowgli_list_t *l;
 	mowgli_node_t *n;
 	static char flagname[400];
-	template_t *exact_t = NULL, *lesser_t = NULL, *greater_t = NULL;
+	template_t *exact_t = NULL;
 	unsigned int flagcount = count_bits(level);
 
 	l = build_template_list(mc);
@@ -382,51 +386,12 @@ static const char *get_template_name(mychan_t *mc, unsigned int level)
 
 		if (t->level == level)
 			exact_t = t;
-
-		else if ((t->level & level) == level)
-		{
-			if (greater_t == NULL)
-				greater_t = t;
-			else
-			{
-				unsigned int a = count_bits(greater_t->level);
-				unsigned int b = count_bits(t->level);
-
-				if (a < b && b > flagcount)
-					greater_t = t;
-			}
-		}
-
-		else if ((level & t->level) == t->level)
-			lesser_t = t;
 	}
 
-	/*
-	 * if we have an exact match (exact_t): set flagname as exact_t->name.
-	 * if we have a greater match (greater_t) and lesser match (lesser_t):
- 	 *      determine which has more flags set (count_bits), return that
-	 *      name with + or -.
-	 * if we have only a lesser match (lesser_t):
-	 *      return that name with +.
-	 * if we have only a greater match (greater_t):
-	 *      return that name with -.
-	 */
 	if (exact_t != NULL)
 		strlcpy(flagname, exact_t->name, sizeof flagname);
-	else if (lesser_t != NULL && greater_t != NULL)
-	{
-		unsigned int lesser_count = count_bits(lesser_t->level);
-		unsigned int greater_count = count_bits(greater_t->level);
-
-		if (lesser_count <= flagcount)
-			snprintf(flagname, sizeof flagname, "%s+", lesser_t->name);
-		else if (greater_count >= flagcount)
-			snprintf(flagname, sizeof flagname, "%s-", lesser_t->name);
-	}
-	else if (lesser_t != NULL)
-		snprintf(flagname, sizeof flagname, "%s+", lesser_t->name);
-	else if (greater_t != NULL)
-		snprintf(flagname, sizeof flagname, "%s-", greater_t->name);
+	else
+		strlcpy(flagname, "<Custom>", sizeof flagname);
 
 	free_template_list(l);
 
@@ -535,6 +500,8 @@ static void update_role_entry(sourceinfo_t *si, mychan_t *mc, const char *role, 
 
 			changes++;
 			chanacs_modify_simple(ca, flags, ~flags);
+
+			hook_call_channel_acl_change(ca);
 			chanacs_close(ca);
 		}
 	}
@@ -584,7 +551,7 @@ static void cs_cmd_access_list(sourceinfo_t *si, int parc, char *parv[])
 	mowgli_node_t *n;
 	mychan_t *mc;
 	const char *channel = parv[0];
-	int operoverride = 0;
+	bool operoverride = false;
 	unsigned int i = 1;
 
 	mc = mychan_find(channel);
@@ -597,7 +564,7 @@ static void cs_cmd_access_list(sourceinfo_t *si, int parc, char *parv[])
 	if (!chanacs_source_has_flag(mc, si, CA_ACLVIEW))
 	{
 		if (has_priv(si, PRIV_CHAN_AUSPEX))
-			operoverride = 1;
+			operoverride = true;
 		else
 		{
 			command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
@@ -651,7 +618,7 @@ static void cs_cmd_access_info(sourceinfo_t *si, int parc, char *parv[])
 	mychan_t *mc;
 	const char *channel = parv[0];
 	const char *target = parv[1];
-	int operoverride = 0;
+	bool operoverride = false;
 	const char *role;
 	struct tm tm;
 	char strfbuf[BUFSIZE];
@@ -674,7 +641,7 @@ static void cs_cmd_access_info(sourceinfo_t *si, int parc, char *parv[])
 	if (!chanacs_source_has_flag(mc, si, CA_ACLVIEW))
 	{
 		if (has_priv(si, PRIV_CHAN_AUSPEX))
-			operoverride = 1;
+			operoverride = true;
 		else
 		{
 			command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
@@ -710,7 +677,7 @@ static void cs_cmd_access_info(sourceinfo_t *si, int parc, char *parv[])
 	role = get_template_name(mc, ca->level);
 
 	tm = *localtime(&ca->tmodified);
-	strftime(strfbuf, sizeof(strfbuf) - 1, "%b %d %H:%M:%S %Y", &tm);
+	strftime(strfbuf, sizeof(strfbuf) - 1, config_options.time_format, &tm);
 
 	command_success_nodata(si, _("Access for \2%s\2 in \2%s\2:"), target, channel);
 
@@ -805,6 +772,7 @@ static void cs_cmd_access_del(sourceinfo_t *si, int parc, char *parv[])
 	role = get_template_name(mc, ca->level);
 
 	ca->level = 0;
+	hook_call_channel_acl_change(ca);
 	chanacs_close(ca);
 
 	command_success_nodata(si, _("\2%s\2 was removed from the \2%s\2 role in \2%s\2."), target, role, channel);
@@ -824,6 +792,7 @@ static void cs_cmd_access_add(sourceinfo_t *si, int parc, char *parv[])
 	chanacs_t *ca;
 	myentity_t *mt;
 	mychan_t *mc;
+	unsigned int new_level;
 	const char *channel = parv[0];
 	const char *target = parv[1];
 	const char *role = parv[2];
@@ -851,12 +820,6 @@ static void cs_cmd_access_add(sourceinfo_t *si, int parc, char *parv[])
 		return;
 	}
 
-	if (chansvs.hide_xop && ToUpper(*(role + 1)) == 'O' && ToUpper(*(role + 2)) == 'P')
-	{
-		command_fail(si, fault_toomany, _("Role \2%s\2 does not exist."), role);
-		return;
-	}
-
 	if (validhostmask(target))
 		ca = chanacs_open(mc, NULL, target, true);
 	else
@@ -877,14 +840,23 @@ static void cs_cmd_access_add(sourceinfo_t *si, int parc, char *parv[])
 		return;
 	}
 
-	ca->level = get_template_flags(mc, role);
-	if (ca->level == 0)
+	if (ca->level != 0)
+	{
+		chanacs_close(ca);
+		command_fail(si, fault_toomany, _("\2%s\2 already has the \2%s\2 role in \2%s\2."), target, get_template_name(mc, ca->level), mc->name);
+		return;
+	}
+
+	new_level = get_template_flags(mc, role);
+	if (new_level == 0)
 	{
 		chanacs_close(ca);
 		command_fail(si, fault_toomany, _("Role \2%s\2 does not exist."), role);
 		return;
 	}
+	ca->level = new_level;
 
+	hook_call_channel_acl_change(ca);
 	chanacs_close(ca);
 
 	command_success_nodata(si, _("\2%s\2 was added with the \2%s\2 role in \2%s\2."), target, role, channel);
@@ -893,22 +865,21 @@ static void cs_cmd_access_add(sourceinfo_t *si, int parc, char *parv[])
 }
 
 /*
- * Syntax: ACCESS #channel SET user role|flags
+ * Syntax: ACCESS #channel SET user role
  *
  * Output:
  *
  * nenolod now has the Founder role in #atheme.
- * nenolod now has the following flags: ...
  */
 static void cs_cmd_access_set(sourceinfo_t *si, int parc, char *parv[])
 {
 	chanacs_t *ca;
 	myentity_t *mt;
 	mychan_t *mc;
+	unsigned int new_level;
 	const char *channel = parv[0];
 	const char *target = parv[1];
 	const char *role = parv[2];
-	unsigned int level, restrictflags;
 
 	mc = mychan_find(channel);
 	if (!mc)
@@ -920,10 +891,13 @@ static void cs_cmd_access_set(sourceinfo_t *si, int parc, char *parv[])
 	if (!target || !role)
 	{
 		command_fail(si, fault_needmoreparams, STR_INSUFFICIENT_PARAMS, "ACCESS SET");
-		command_fail(si, fault_needmoreparams, _("Syntax: ACCESS <#channel> SET <account|hostmask> <role|flags>"));
+		command_fail(si, fault_needmoreparams, _("Syntax: ACCESS <#channel> SET <account|hostmask> <role>"));
 		return;
 	}
 
+	/* allow a user to resign their access even without FLAGS access. this is
+	 * consistent with the other commands. --nenolod
+	 */
 	if (!chanacs_source_has_flag(mc, si, CA_FLAGS))
 	{
 		command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
@@ -946,25 +920,31 @@ static void cs_cmd_access_set(sourceinfo_t *si, int parc, char *parv[])
 	if (ca->level == 0 && chanacs_is_table_full(ca))
 	{
 		chanacs_close(ca);
-		command_fail(si, fault_toomany, _("Channel %s access list is full."), mc->name);
+		command_fail(si, fault_toomany, _("Channel \2%s\2 access list is full."), mc->name);
 		return;
 	}
 
-	if ((level = get_template_flags(mc, role)) != 0)
+	new_level = get_template_flags(mc, role);
+
+	if (new_level == 0)
 	{
-		ca->level = level;
 		chanacs_close(ca);
-		command_success_nodata(si, _("\2%s\2 now has the \2%s\2 role in \2%s\2."), target, role, channel);
+		command_fail(si, fault_toomany, _("Role \2%s\2 does not exist."), role);
 		return;
 	}
 
-	restrictflags = chanacs_source_flags(mc, si);
-	ca->level = xflag_apply_batch(ca->level, parc - 2, parv + 2, restrictflags);
+	if ((ca->level & CA_FOUNDER) && !(new_level & CA_FOUNDER) && mychan_num_founders(mc) == 1)
+	{
+		command_fail(si, fault_noprivs, _("You may not remove the last founder."));
+		return;
+	}
 
-	command_success_nodata(si, _("\2%s\2 now has the following flags in \2%s\2: \2%s\2"), target, channel,
-			       xflag_tostr(ca->level));
+	ca->level = new_level;
 
+	hook_call_channel_acl_change(ca);
 	chanacs_close(ca);
+
+	command_success_nodata(si, _("\2%s\2 now has the \2%s\2 role in \2%s\2."), target, role, channel);
 
 	logcommand(si, CMDLOG_SET, "ACCESS:SET: \2%s\2 to \2%s\2 as \2%s\2", target, mc->name, role);
 }
@@ -1024,6 +1004,7 @@ static void cs_cmd_role_list(sourceinfo_t *si, int parc, char *parv[])
 static void cs_cmd_role_add(sourceinfo_t *si, int parc, char *parv[])
 {
 	mychan_t *mc;
+	mowgli_list_t *l;
 	const char *channel = parv[0];
 	const char *role = parv[1];
 	unsigned int oldflags, newflags, restrictflags;
@@ -1050,12 +1031,123 @@ static void cs_cmd_role_add(sourceinfo_t *si, int parc, char *parv[])
 
 	restrictflags = chanacs_source_flags(mc, si);
 	oldflags = get_template_flags(mc, role);
+
+	if (oldflags != 0)
+	{
+		command_fail(si, fault_badparams, _("Role \2%s\2 already exists."), role);
+		return;
+	}
+
 	newflags = xflag_apply_batch(oldflags, parc - 2, parv + 2, restrictflags);
+
+	if (newflags & CA_FOUNDER)
+		newflags |= CA_FLAGS;
 
 	if (newflags == 0)
 	{
-		command_fail(si, fault_nosuch_target, _("You cannot remove all flags from the role \2%s\2."), role);
+		if (oldflags == 0)
+			command_fail(si, fault_badparams, _("No valid flags given, use /%s%s HELP ROLE ADD for a list"), ircd->uses_rcommand ? "" : "msg ", chansvs.me->disp);
+		else
+			command_fail(si, fault_nosuch_target, _("You cannot remove all flags from the role \2%s\2."), role);
 		return;
+	}
+	l = build_template_list(mc);
+	if (l != NULL)
+	{
+		mowgli_node_t *n;
+
+		MOWGLI_ITER_FOREACH(n, l->head)
+		{
+			template_t *t = n->data;
+
+			if (t->level == newflags)
+			{
+				command_fail(si, fault_alreadyexists, _("The role \2%s\2 already has flags \2%s\2."), t->name, xflag_tostr(newflags));
+				return;
+			}
+		}
+
+		free_template_list(l);
+	}
+
+	command_success_nodata(si, _("Flags for role \2%s\2 were changed to: \2%s\2."), role, xflag_tostr(newflags));
+	update_role_entry(si, mc, role, newflags);
+}
+
+/*
+ * Syntax: ROLE #channel SET <role> [flags-changes]
+ *
+ * Output:
+ *
+ * Creates a new role with the given flags.
+ */
+static void cs_cmd_role_set(sourceinfo_t *si, int parc, char *parv[])
+{
+	mychan_t *mc;
+	mowgli_list_t *l;
+	const char *channel = parv[0];
+	const char *role = parv[1];
+	unsigned int oldflags, newflags, restrictflags;
+
+	mc = mychan_find(channel);
+	if (!mc)
+	{
+		command_fail(si, fault_nosuch_target, _("Channel \2%s\2 is not registered."), channel);
+		return;
+	}
+	
+	if (!role)
+	{
+		command_fail(si, fault_needmoreparams, STR_INSUFFICIENT_PARAMS, "ROLE ADD|SET");
+		command_fail(si, fault_needmoreparams, _("Syntax: ROLE <#channel> ADD|SET <role> [flags]"));
+		return;
+	}
+	
+	if (!chanacs_source_has_flag(mc, si, CA_FLAGS))
+	{
+		command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
+		return;
+	}
+
+	restrictflags = chanacs_source_flags(mc, si);
+	oldflags = get_template_flags(mc, role);
+
+	if (oldflags == 0)
+	{
+		command_fail(si, fault_nosuch_target, _("Role \2%s\2 does not exist."), role);
+		return;
+	}
+
+	newflags = xflag_apply_batch(oldflags, parc - 2, parv + 2, restrictflags);
+
+	if (newflags & CA_FOUNDER)
+		newflags |= CA_FLAGS;
+
+	if (newflags == 0)
+	{
+		if (oldflags == 0)
+			command_fail(si, fault_badparams, _("No valid flags given, use /%s%s HELP ROLE ADD for a list"), ircd->uses_rcommand ? "" : "msg ", chansvs.me->disp);
+		else
+			command_fail(si, fault_nosuch_target, _("You cannot remove all flags from the role \2%s\2."), role);
+		return;
+	}
+	l = build_template_list(mc);
+	if (l != NULL)
+	{
+		mowgli_node_t *n;
+
+		MOWGLI_ITER_FOREACH(n, l->head)
+		{
+			template_t *t = n->data;
+
+			if (t->level == newflags)
+			{
+				command_fail(si, fault_alreadyexists, _("The role \2%s\2 already has flags \2%s\2."), t->name, xflag_tostr(newflags));
+				return;
+			}
+		}
+
+		free_template_list(l);
 	}
 
 	command_success_nodata(si, _("Flags for role \2%s\2 were changed to: \2%s\2."), role, xflag_tostr(newflags));
