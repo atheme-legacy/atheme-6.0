@@ -1,10 +1,10 @@
-# Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2010.
+# Ignacio Riquelme Morelle <shadowm2006@gmail.com>, 2010, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Spanish language file for Atheme\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-09 03:46-0300\n"
-"PO-Revision-Date: 2010-11-30 23:29-0300\n"
+"PO-Revision-Date: 2011-03-09 03:50-0300\n"
 "Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
 "Language-Team: Spanish <shadowm2006@gmail.com>\n"
 "Language: \n"
@@ -430,12 +430,12 @@ msgid "You cannot assign bots to %s."
 msgstr "Ud. no puede asignar bots en %s."
 
 #: modules/botserv/main.c:827
-#, fuzzy, c-format
+#, c-format
 msgid "You are not authorized to assign bots on %s."
 msgstr "Ud. no está autorizado a asignar bots en %s."
 
 #: modules/botserv/main.c:842
-#, fuzzy, c-format
+#, c-format
 msgid "You are not authorized to assign the bot %s to a channel."
 msgstr "Ud. no está autorizado a asignar el bot %s a un canal."
 
@@ -454,7 +454,7 @@ msgid "Syntax: UNASSIGN <#channel>"
 msgstr "Sintaxis: UNASSIGN <#canal>"
 
 #: modules/botserv/main.c:892
-#, fuzzy, c-format
+#, c-format
 msgid "You are not authorized to unassign a bot on %s."
 msgstr "Ud. no está autorizado a desasignar un bot de %s."
 
@@ -582,9 +582,8 @@ msgid "Add an access list entry."
 msgstr "Agrega una entrada de lista de acceso."
 
 #: modules/chanserv/access.c:52
-#, fuzzy
 msgid "Update an access list entry."
-msgstr "Agrega una entrada de lista de acceso."
+msgstr "Actualiza una entrada de lista de acceso."
 
 #: modules/chanserv/access.c:57
 msgid "List available roles."
@@ -730,9 +729,9 @@ msgid "Channel %s access list is full."
 msgstr "La lista de acceso del canal %s está llena."
 
 #: modules/chanserv/access.c:843
-#, fuzzy, c-format
+#, c-format
 msgid "%s already has the %s role in %s."
-msgstr "%s ahora tiene el rol %s en %s."
+msgstr "%s ya tiene el rol %s en %s."
 
 #: modules/chanserv/access.c:851 modules/chanserv/access.c:928
 #: modules/chanserv/access.c:1112 modules/chanserv/access.c:1189
@@ -746,14 +745,13 @@ msgid "%s was added with the %s role in %s."
 msgstr "%s ha sido agregado con el rol %s a %s."
 
 #: modules/chanserv/access.c:890
-#, fuzzy
 msgid "Syntax: ACCESS <#channel> SET <account|hostmask> <role>"
-msgstr "Sintaxis: ACCESS <#canal> SET <cuenta|máscara de host> <rol|permisos>"
+msgstr "Sintaxis: ACCESS <#canal> SET <cuenta|máscara de host> <rol>"
 
 #: modules/chanserv/access.c:919
-#, fuzzy, c-format
+#, c-format
 msgid "Channel %s access list is full."
-msgstr "La lista de acceso del canal %s está llena."
+msgstr "La lista de acceso del canal %s está llena."
 
 #: modules/chanserv/access.c:942
 #, c-format
@@ -769,15 +767,14 @@ msgid "Syntax: ROLE <#channel> ADD|SET <role> [flags]"
 msgstr "Sintaxis: ROLE <#canal> ADD|SET <rol> [permisos]"
 
 #: modules/chanserv/access.c:1032
-#, fuzzy, c-format
+#, c-format
 msgid "Role %s already exists."
-msgstr "%s ya se encuentra registrado."
+msgstr "El rol %s ya existe."
 
 #: modules/chanserv/access.c:1044 modules/chanserv/access.c:1124
-#, fuzzy, c-format
+#, c-format
 msgid "No valid flags given, use /%s%s HELP ROLE ADD for a list"
-msgstr ""
-"Permisos no válidos, vea /%s%s HELP FLAGS para una lista de permisos válidos"
+msgstr "No especificó permisos válidos, vea /%s%s HELP ROLE ADD para una lista"
 
 #: modules/chanserv/access.c:1046 modules/chanserv/access.c:1126
 #, c-format
@@ -785,9 +782,9 @@ msgid "You cannot remove all flags from the role %s."
 msgstr "No puede quitar todos los permisos del rol %s."
 
 #: modules/chanserv/access.c:1060 modules/chanserv/access.c:1140
-#, fuzzy, c-format
+#, c-format
 msgid "The role %s already has flags %s."
-msgstr "%s ya tiene los permisos %s en %s"
+msgstr "El rol %s ya tiene los permisos %s."
 
 #: modules/chanserv/access.c:1068 modules/chanserv/access.c:1148
 #, c-format
