@@ -1,3 +1,25 @@
+Atheme Services 6.0.6 Release Notes
+===================================
+ircd
+- inspircd: abort if the uplink is on a client port.
+- charybdis: handle immunity like ircd-seven does.
+backend
+- flatfile: clarify error message when data is unavailable for
+  conversion to OpenSEX.
+chanserv
+- Enabling hide_xop now truly removes the default xOP templates.
+gameserv
+- always respect set_gameserv.
+- refactoring which also removed a hack for charybdis 1.x
+nickserv
+- register: allow registration password length to exceed PASSLEN 
+  if it is being hashed.
+documentation
+- various small fixes.
+other
+- configuration option general::immune added for IRCd's that
+  do not have some proper immune mode.
+
 Atheme Services 6.0.5 Release Notes
 ===================================
 ircd
