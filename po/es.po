@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Spanish language file for Atheme\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-03-31 02:06-0300\n"
-"PO-Revision-Date: 2011-03-09 03:50-0300\n"
+"PO-Revision-Date: 2011-03-31 02:09-0300\n"
 "Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
 "Language-Team: Spanish <shadowm2006@gmail.com>\n"
 "Language: \n"
@@ -1675,12 +1675,10 @@ msgid "%s has been deopped on %s."
 msgstr "%s ya no es op de %s."
 
 #: modules/chanserv/owner.c:21
-#, fuzzy
 msgid "Gives the channel owner flag to a user."
 msgstr "Otorga el estado de dueño del canal a un usuario."
 
 #: modules/chanserv/owner.c:23
-#, fuzzy
 msgid "Removes the channel owner flag from a user."
 msgstr "Quita el estado de dueño del canal de un usuario."
 
@@ -1708,12 +1706,10 @@ msgid "%s has been unset as owner on %s."
 msgstr "%s ya no es el dueño de %s."
 
 #: modules/chanserv/protect.c:21
-#, fuzzy
 msgid "Gives the channel protection flag to a user."
 msgstr "Otorga el estado de protección del canal a un usuario."
 
 #: modules/chanserv/protect.c:23
-#, fuzzy
 msgid "Removes the channel protection flag from a user."
 msgstr "Quita el estado de protección del canal a un usuario."
 
@@ -2358,9 +2354,9 @@ msgid "You are not allowed to set %s on template %s in %s."
 msgstr "Ud. no está autorizado a establecer %s en la plantilla %s en %s."
 
 #: modules/chanserv/template.c:347
-#, fuzzy, c-format
+#, c-format
 msgid "The template %.*s already has flags %.*s."
-msgstr "El rol %s ya tiene los permisos %s."
+msgstr "La plantilla %.*s ya tiene los permisos %.*s."
 
 #: modules/chanserv/template.c:359
 #, c-format
@@ -4884,7 +4880,7 @@ msgstr "Sintaxis: REGISTER <contraseña> <e-mail>"
 #: modules/nickserv/register.c:91
 #, c-format
 msgid "Registration passwords may not be longer than %d characters."
-msgstr ""
+msgstr "Las contraseñas de registro no pueden exceder los %d caracteres."
 
 #: modules/nickserv/register.c:97
 msgid "A user matching this account is already on IRC."
