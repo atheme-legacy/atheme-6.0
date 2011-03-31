@@ -16,6 +16,7 @@ SRCS = \
 	authcookie.c	\
 	crypt.c		\
 	dh-blowfish.c	\
+	external.c	\
 	main.c		\
 	plain.c
 
