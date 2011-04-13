@@ -52,7 +52,7 @@ void _modinit(module_t *m)
 	service_named_bind_command("nickserv", &ns_badmail);
 }
 
-void _moddeinit(module_unload_intent_t intent)
+void _moddeinit()
 {
 	hook_del_user_can_register(check_registration);
 	hook_del_db_write(write_bedb);
@@ -221,7 +221,7 @@ static void ns_cmd_badmail(sourceinfo_t *si, int parc, char *parv[])
 			l = n->data;
 
 			tm = *localtime(&l->mail_ts);
-			strftime(buf, BUFSIZE, config_options.time_format, &tm);
+			strftime(buf, BUFSIZE, "%b %d %T %Y %Z", &tm);
 			command_success_nodata(si, "Email: \2%s\2, Reason: \2%s\2 (%s - %s)",
 				l->mail, l->reason, l->creator, buf);
 		}
