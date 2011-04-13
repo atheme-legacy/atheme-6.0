@@ -39,6 +39,8 @@ gen_regcheckemail.c - Rejects account registrations with certain email addresses
                       first as it will block registation from users with email
                       addresses at gmail.com, yahoo.com, hotmail.com and msn.com
                       by default.
+					  DEPRECATED in Atheme 6.0.7 by nickserv/badmail which is far
+					  nore configurable and easy to use.
 
 gen_vhostonreg.c - Assigns a $account.hidehostsuffix vhost to all users upon
                    account registration. $account will be replaced by the users'
