@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Russian language file for Atheme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-16 05:35-0300\n"
+"POT-Creation-Date: 2011-04-16 18:40-0300\n"
 "PO-Revision-Date: 2009-02-23 01:05+0300\n"
 "Last-Translator: Kein <kein-of@yandex.ru>\n"
 "Language-Team: Kein's Translation Team <kein-of@yandex.ru>\n"
@@ -4933,12 +4933,12 @@ msgstr "Синтаксис: LISTMAIL <email>"
 msgid "No accounts matched e-mail address %s"
 msgstr "Ни одного аккаунта не зарегистрировано на адрес email %s"
 
-#: modules/nickserv/listmail.c:78 modules/nickserv/listownmail.c:81
+#: modules/nickserv/listmail.c:78 modules/nickserv/listownmail.c:92
 #, c-format
 msgid "%d match for e-mail address %s"
 msgstr "%d совпадает для адреса email %s"
 
-#: modules/nickserv/listmail.c:79 modules/nickserv/listownmail.c:82
+#: modules/nickserv/listmail.c:79 modules/nickserv/listownmail.c:93
 #, c-format
 msgid "%d matches for e-mail address %s"
 msgstr "%d совпадений для адреса email %s"
@@ -4947,6 +4947,13 @@ msgstr "%d совпадений для адреса email %s"
 #, fuzzy
 msgid "Lists accounts registered to your e-mail address."
 msgstr "Показывает список аккаунтов зарегистрированных на данный адрес e-mail."
+
+#: modules/nickserv/listownmail.c:80
+#, fuzzy
+msgid "You must have a valid email address to perform this operation."
+msgstr ""
+"Вам нужно подтвердить ваш адрес email прежде чем вы сможете включить функцию "
+"отправки memo-сообщений на email"
 
 #: modules/nickserv/logout.c:20
 msgid "Logs your services session out."

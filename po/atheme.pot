@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-16 05:35-0300\n"
+"POT-Creation-Date: 2011-04-16 18:40-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4678,18 +4678,22 @@ msgstr ""
 msgid "No accounts matched e-mail address %s"
 msgstr ""
 
-#: modules/nickserv/listmail.c:78 modules/nickserv/listownmail.c:81
+#: modules/nickserv/listmail.c:78 modules/nickserv/listownmail.c:92
 #, c-format
 msgid "%d match for e-mail address %s"
 msgstr ""
 
-#: modules/nickserv/listmail.c:79 modules/nickserv/listownmail.c:82
+#: modules/nickserv/listmail.c:79 modules/nickserv/listownmail.c:93
 #, c-format
 msgid "%d matches for e-mail address %s"
 msgstr ""
 
 #: modules/nickserv/listownmail.c:20
 msgid "Lists accounts registered to your e-mail address."
+msgstr ""
+
+#: modules/nickserv/listownmail.c:80
+msgid "You must have a valid email address to perform this operation."
 msgstr ""
 
 #: modules/nickserv/logout.c:20
