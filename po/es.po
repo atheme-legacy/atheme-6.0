@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Spanish language file for Atheme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-31 02:06-0300\n"
+"POT-Creation-Date: 2011-04-16 05:35-0300\n"
 "PO-Revision-Date: 2011-03-31 02:09-0300\n"
 "Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
 "Language-Team: Spanish <shadowm2006@gmail.com>\n"
@@ -169,14 +169,15 @@ msgstr "%s se encuentra actualmente vacío."
 #: modules/memoserv/send.c:62 modules/memoserv/sendgroup.c:64
 #: modules/memoserv/sendops.c:63 modules/nickserv/access.c:215
 #: modules/nickserv/access.c:267 modules/nickserv/access.c:393
-#: modules/nickserv/cert.c:54 modules/nickserv/cert.c:109
-#: modules/nickserv/cert.c:145 modules/nickserv/enforce.c:102
-#: modules/nickserv/group.c:60 modules/nickserv/group.c:113
-#: modules/nickserv/listchans.c:64 modules/nickserv/listownmail.c:63
-#: modules/nickserv/logout.c:42 modules/nickserv/set_accountname.c:53
-#: modules/nickserv/set_core.c:59 modules/nickserv/set_enforcetime.c:49
-#: modules/nickserv/status.c:85 modules/nickserv/subscribe.c:60
-#: modules/nickserv/vacation.c:24 modules/operserv/identify.c:64
+#: modules/nickserv/badmail.c:146 modules/nickserv/cert.c:54
+#: modules/nickserv/cert.c:109 modules/nickserv/cert.c:145
+#: modules/nickserv/enforce.c:102 modules/nickserv/group.c:60
+#: modules/nickserv/group.c:113 modules/nickserv/listchans.c:64
+#: modules/nickserv/listownmail.c:63 modules/nickserv/logout.c:42
+#: modules/nickserv/set_accountname.c:53 modules/nickserv/set_core.c:59
+#: modules/nickserv/set_enforcetime.c:49 modules/nickserv/status.c:85
+#: modules/nickserv/subscribe.c:60 modules/nickserv/vacation.c:24
+#: modules/operserv/identify.c:64
 msgid "You are not logged in."
 msgstr "Ud. no ha iniciado sesión."
 
@@ -4152,6 +4153,45 @@ msgstr "La máscara %s no se encuentra en su lista de acceso."
 msgid "Deleted mask %s from your access list."
 msgstr "Se ha quitado la máscara %s de su lista de acceso."
 
+#: modules/nickserv/badmail.c:24
+#, fuzzy
+msgid "Disallows registrations from certain email addresses."
+msgstr "Muestra una lista de cuentas registradas por una dirección de e-mail."
+
+#: modules/nickserv/badmail.c:131
+#, fuzzy
+msgid "Syntax: BADMAIL ADD|DEL|LIST [parameters]"
+msgstr "Sintaxis: ACCESS ADD|DEL|LIST [máscara]"
+
+#: modules/nickserv/badmail.c:140
+#, fuzzy
+msgid "Syntax: BADMAIL ADD <email> [reason]"
+msgstr "Sintaxis: IGNORE ADD <máscara> <razón>"
+
+#: modules/nickserv/badmail.c:157
+#, fuzzy, c-format
+msgid "Email %s has already been banned."
+msgstr "%s ha sido recuperado."
+
+#: modules/nickserv/badmail.c:174
+msgid "None"
+msgstr ""
+
+#: modules/nickserv/badmail.c:181
+#, fuzzy, c-format
+msgid "You have banned email address %s."
+msgstr "Ud. no tiene acceso especial a %s."
+
+#: modules/nickserv/badmail.c:189
+#, fuzzy
+msgid "Syntax: BADMAIL DEL <email>"
+msgstr "Sintaxis: LISTMAIL <email>"
+
+#: modules/nickserv/badmail.c:211
+#, fuzzy, c-format
+msgid "Email pattern %s not found in badmail database."
+msgstr "No se encontró el nick %s en la lista de solicitudes de ayuda."
+
 #: modules/nickserv/cert.c:20
 msgid "Changes and shows your nickname CertFP authentication list."
 msgstr "Cambia y muestra su lista de autenticación de nick CertFP."
@@ -7424,12 +7464,12 @@ msgstr "XLINE:EXPIRE: %s establecida hace %s por %s"
 msgid "XLINE expired on %s, set by %s"
 msgstr "XLINE sobre %s expirada, establecida por %s"
 
-#: src/node.c:538
+#: src/node.c:534
 #, c-format
 msgid "QLINE:EXPIRE: %s set %s ago by %s"
 msgstr "QLINE:EXPIRE: %s establecida hace %s por %s"
 
-#: src/node.c:541
+#: src/node.c:537
 #, c-format
 msgid "QLINE expired on %s, set by %s"
 msgstr "QLINE sobre %s expirada, establecida por %s"

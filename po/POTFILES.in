@@ -110,6 +110,7 @@ modules/memoserv/send.c
 modules/memoserv/sendgroup.c
 modules/memoserv/sendops.c
 modules/nickserv/access.c
+modules/nickserv/badmail.c
 modules/nickserv/cert.c
 modules/nickserv/cracklib.c
 modules/nickserv/drop.c
