@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Spanish language file for Atheme\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-04-16 05:35-0300\n"
-"PO-Revision-Date: 2011-03-31 02:09-0300\n"
+"PO-Revision-Date: 2011-04-16 05:39-0300\n"
 "Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
 "Language-Team: Spanish <shadowm2006@gmail.com>\n"
 "Language: \n"
@@ -4154,43 +4154,39 @@ msgid "Deleted mask %s from your access list."
 msgstr "Se ha quitado la máscara %s de su lista de acceso."
 
 #: modules/nickserv/badmail.c:24
-#, fuzzy
 msgid "Disallows registrations from certain email addresses."
-msgstr "Muestra una lista de cuentas registradas por una dirección de e-mail."
+msgstr "Prohíbe el registro de ciertas direcciones de email."
 
 #: modules/nickserv/badmail.c:131
-#, fuzzy
 msgid "Syntax: BADMAIL ADD|DEL|LIST [parameters]"
-msgstr "Sintaxis: ACCESS ADD|DEL|LIST [máscara]"
+msgstr "Sintaxis: BADMAIL ADD|DEL|LIST [parámetros]"
 
 #: modules/nickserv/badmail.c:140
-#, fuzzy
 msgid "Syntax: BADMAIL ADD <email> [reason]"
-msgstr "Sintaxis: IGNORE ADD <máscara> <razón>"
+msgstr "Sintaxis: BADMAIL ADD <email> [razón]"
 
 #: modules/nickserv/badmail.c:157
-#, fuzzy, c-format
+#, c-format
 msgid "Email %s has already been banned."
-msgstr "%s ha sido recuperado."
+msgstr "La dirección %s ya ha sido vetada."
 
 #: modules/nickserv/badmail.c:174
 msgid "None"
-msgstr ""
+msgstr "Ninguna"
 
 #: modules/nickserv/badmail.c:181
-#, fuzzy, c-format
+#, c-format
 msgid "You have banned email address %s."
-msgstr "Ud. no tiene acceso especial a %s."
+msgstr "Ud. ha vetado la dirección de email %s."
 
 #: modules/nickserv/badmail.c:189
-#, fuzzy
 msgid "Syntax: BADMAIL DEL <email>"
-msgstr "Sintaxis: LISTMAIL <email>"
+msgstr "Sintaxis: BADMAIL DEL <email>"
 
 #: modules/nickserv/badmail.c:211
-#, fuzzy, c-format
+#, c-format
 msgid "Email pattern %s not found in badmail database."
-msgstr "No se encontró el nick %s en la lista de solicitudes de ayuda."
+msgstr "El patrón de email %s no se encuentra en la base de datos de BADMAIL."
 
 #: modules/nickserv/cert.c:20
 msgid "Changes and shows your nickname CertFP authentication list."

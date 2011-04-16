@@ -1,0 +1,34 @@
+Ayuda para BADMAIL:
+
+BADMAIL le permite administrar una lista de direcciones de email no
+autorizadas para su uso en el registro.
+
+Estas direcciones son almacenadas en la base de datos de Atheme y
+conservadas entre reinicios de servicios.
+
+Con BADMAIL ADD, Ud. puede utilizar comodines para vetar direcciones
+que coinciden con un patrón.
+
+Sintaxis: BADMAIL ADD <email> [razón]
+
+Ejemplos:
+    /msg &nick& BADMAIL ADD jdhore1@gmail.com alguna razón
+    /msg &nick& BADMAIL ADD *@aol.com cierta razón
+    /msg &nick& BADMAIL ADD *@*.tk otra razón
+    /msg &nick& BADMAIL ADD spam-bots-*@gmail.com
+
+BADMAIL DEL le permite borrar entradas de la lista de direcciones
+vetadas actualmente.
+
+Sintaxis: BADMAIL DEL <email>
+
+Ejemplos:
+    /msg &nick& BADMAIL DEL foo@bar.com
+    /msg &nick& BADMAIL DEL *@aol.com
+
+BADMAIL LIST muestra una lista de direcciones vetadas.
+
+Sintaxis: BADMAIL LIST
+
+Ejemplos:
+    /msg &nick& BADMAIL LIST
