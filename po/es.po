@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Spanish language file for Atheme\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-04-16 18:40-0300\n"
-"PO-Revision-Date: 2011-04-16 05:39-0300\n"
+"PO-Revision-Date: 2011-04-16 18:41-0300\n"
 "Last-Translator: Ignacio Riquelme Morelle <shadowm2006@gmail.com>\n"
 "Language-Team: Spanish <shadowm2006@gmail.com>\n"
 "Language: \n"
@@ -4808,10 +4808,9 @@ msgstr ""
 "Muestra una lista de cuentas registradas por su propia dirección de e-mail."
 
 #: modules/nickserv/listownmail.c:80
-#, fuzzy
 msgid "You must have a valid email address to perform this operation."
 msgstr ""
-"Ud. tiene que verificar su dirección de e-mail antes de poder realizar esta "
+"Ud. debe registrar una dirección de email válida antes de efectuar esta "
 "operación."
 
 #: modules/nickserv/logout.c:20
