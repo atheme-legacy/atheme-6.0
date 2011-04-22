@@ -3,11 +3,15 @@ Atheme Services 6.0.7 Release Notes
 ircd
 - shadowircd: Fix possible mlock issues if m_roleplay is in use
   on shadowircd 6.3.x.
+- inspircd: Clarify the taint message if a tainted InspIRCd module is used.
+groupserv
+- fix a crash if metadata is added for groups that don't exist.
 nickserv
 - added badmail module from 7.0. Allows you to stop registration 
   of accounts with certain email addresses and allows modification
   of the badmail list on-the-fly. This module deprecates gen_regcheckemail
   which was removed in 7.0.
+- listownmail: Disallow from accounts that don't have a valid email address.
 operserv
 - sqline: Better detection of whether SQLINEs match already existing ones
   or not.
@@ -15,6 +19,11 @@ saslserv
 - external: Support for new AUTHENTICATE EXTERNAL draft extension.
 xmlrpc
 - reject malformed messages with blank XMLRPC parameters (Fixes SRV-96).
+contrib
+- anope_convert.c: Convert to outputting a OpenSEX database.
+other
+- spanish translation updates.
+
 Atheme Services 6.0.6 Release Notes
 ===================================
 ircd
