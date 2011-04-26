@@ -1,4 +1,5 @@
 Atheme Services 6.0.7 Release Notes
+Codename: "Michael 'dKingston' Rodriguez IRC turnpike"
 ===================================
 ircd
 - shadowircd: Fix possible mlock issues if m_roleplay is in use
