@@ -185,6 +185,9 @@ int main(int argc, char *argv[])
 	/* set signal handlers */
 	init_signal_handlers();
 
+	/* initialize strshare */
+	strshare_init();
+
 	/* open log */
 	log_open();
 	mowgli_log_set_cb(process_mowgli_log);
@@ -214,7 +217,6 @@ int main(int argc, char *argv[])
 #endif
 
         event_init();
-	strshare_init();
         hooks_init();
         init_netio();
         init_socket_queues();
