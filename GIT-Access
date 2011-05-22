@@ -1,0 +1,6 @@
+The Atheme 6.0 release GIT repository can be checked out using the following command:
+	git clone git://git.atheme.org/release/atheme-6.0.git atheme-6.0
+
+Atheme's GIT repository depot can be browsed over the internet at 
+the following address:
+	http://git.atheme.org/
