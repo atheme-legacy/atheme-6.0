@@ -1,4 +1,3 @@
-syntax: glob
 Makefile
 *~
 *.bak
@@ -37,6 +36,8 @@ po/*.mo
 po/stamp-po
 scripts/*.tbz2
 scripts/*.tgz
+scripts/*.tar.bz2
+scripts/*.tar.gz
 src/atheme-services
 tools/createtestdb
 tools/htmlhelp
