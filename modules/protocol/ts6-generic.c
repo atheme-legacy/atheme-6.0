@@ -542,7 +542,8 @@ static void ts6_mlock_sts(channel_t *c)
 	if (mc == NULL)
 		return;
 
-	sts(":%s MLOCK %ld %s :%s", ME, c->ts, c->name, mychan_get_sts_mlock(mc));
+	sts(":%s MLOCK %lu %s :%s", ME, (unsigned long)c->ts, c->name,
+			mychan_get_sts_mlock(mc));
 }
 
 static void m_mlock(sourceinfo_t *si, int parc, char *parv[])
@@ -561,7 +562,7 @@ static void m_mlock(sourceinfo_t *si, int parc, char *parv[])
 	if (!(mc = mychan_find(c->name)))
 	{
 		/* Unregistered channel. Clear the MLOCK. */
-		sts(":%s MLOCK %ld %s :", ME, c->ts, c->name);
+		sts(":%s MLOCK %lu %s :", ME, (unsigned long)c->ts, c->name);
 		return;
 	}
 
@@ -573,7 +574,8 @@ static void m_mlock(sourceinfo_t *si, int parc, char *parv[])
 	if (0 != strcmp(parv[2], mlock))
 	{
 		/* MLOCK is changing, with the same TS. Bounce back the correct one. */
-		sts(":%s MLOCK %ld %s :%s", ME, c->ts, c->name, mlock);
+		sts(":%s MLOCK %lu %s :%s", ME, (unsigned long)c->ts, c->name,
+				mlock);
 	}
 }
 
@@ -1420,7 +1422,8 @@ static void channel_drop(mychan_t *mc)
 	if (mc->chan == NULL)
 		return;
 
-	sts(":%s MLOCK %ld %s :", ME, mc->chan->ts, mc->chan->name);
+	sts(":%s MLOCK %lu %s :", ME, (unsigned long)mc->chan->ts,
+			mc->chan->name);
 }
 
 static server_t *sid_find(char *name)
