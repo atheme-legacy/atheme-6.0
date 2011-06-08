@@ -1,3 +1,19 @@
+Atheme Services 6.0.8 Release Notes
+Codename: "Thanks for ruining IRC, Nokia."
+===================================
+chanserv
+- fix a DoS in chanserv/flags.
+nickserv
+- fix releasing of enforcers over XMLRPC.
+- fix a possible buffer overflow in nickserv/cracklib.
+contrib
+- anope_convert: Fix migration of users to opensex.
+code
+- many assertions added and various minor fixes
+other
+- switch all internal scripts and such to use git as
+  atheme.org no longer uses mercurial.
+
 Atheme Services 6.0.7 Release Notes
 Codename: "Michael 'dKingston' Rodriguez IRC turnpike"
 ===================================
