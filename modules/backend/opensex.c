@@ -1190,6 +1190,9 @@ static void opensex_db_load(void)
 	database_handle_t *db;
 
 	db = db_open(DB_READ);
+	if (db == NULL)
+		return;
+
 	opensex_db_parse(db);
 	db_close(db);
 }
