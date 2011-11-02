@@ -734,7 +734,7 @@ static void cs_cmd_access_del(sourceinfo_t *si, int parc, char *parv[])
 	/* allow a user to resign their access even without FLAGS access. this is
 	 * consistent with the other commands. --nenolod
 	 */
-	if (!chanacs_source_has_flag(mc, si, CA_FLAGS) && si->smu != NULL && !strcasecmp(target, entity(si->smu)->name))
+	if (!chanacs_source_has_flag(mc, si, CA_FLAGS) && entity(si->smu) != mt)
 	{
 		command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
 		return;
