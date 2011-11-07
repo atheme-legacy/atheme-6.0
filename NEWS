@@ -1,3 +1,37 @@
+Atheme Services 6.0.9 Release Notes
+Codename: "Occupy IRC."
+===================================
+ircd
+- inspircd: Fix end-of-burst detection.
+- ts6: Mark +S services as UF_IMMUNE.
+- p10: Recognize umode +k as providing kick immunity.
+- plexus: Fix real hostname showing up as vhost.
+backend
+- opensex: Cleanly handle no OpenSEX DB existing on
+  startup.
+botserv
+- bottalk: Display the channel bottalk commands are being
+  used in in the logcommand message.
+chanserv
+- access: Many fixes and improvements and VERBOSE support.
+groupserv
+- register: Honor PRIV_REG_NOLIMIT.
+nickserv
+- badmail: Require a reason when adding a new entry.
+operserv
+- clones: Add logcommand calls for CLONES:SETEXEMPT command.
+other
+- notify users when bad_password() is hit on their account.
+- avoid kill loop when killing operserv while logging rawdata
+  to IRC.
+- call shutdown(2) on connections being closed.
+- fix possible recursion in the logsystem.
+- use localtime() where possible.
+- final fixes for NLS detection.
+bugs fixed in this release
+- SRV-119, SRV-120, SRV-125, SRV-128, SRV-130, SRV-136,
+  SRV-137
+
 Atheme Services 6.0.8 Release Notes
 Codename: "Thanks for ruining IRC, Nokia."
 ===================================
