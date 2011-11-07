@@ -149,7 +149,7 @@ static void cs_cmd_access(sourceinfo_t *si, int parc, char *parv[])
 		command_fail(si, fault_needmoreparams, _("Syntax: ACCESS <#channel> <command> [parameters]"));
 		return;
 	}
-	
+
 	if (parv[0][0] == '#')
 		chan = parv[0], cmd = parv[1];
 	else if (parv[1][0] == '#')
@@ -189,7 +189,7 @@ static void cs_cmd_role(sourceinfo_t *si, int parc, char *parv[])
 		command_fail(si, fault_needmoreparams, _("Syntax: ROLE <#channel> <command> [parameters]"));
 		return;
 	}
-	
+
 	if (parv[0][0] == '#')
 		chan = parv[0], cmd = parv[1];
 	else if (parv[1][0] == '#')
@@ -331,7 +331,7 @@ static mowgli_list_t *build_template_list(mychan_t *mc)
 	/* reverse the list so that we go from highest flags to lowest. */
 	mowgli_list_reverse(l);
 
-	return l;	
+	return l;
 }
 
 static void free_template_list(mowgli_list_t *l)
@@ -675,7 +675,7 @@ static void cs_cmd_access_info(sourceinfo_t *si, int parc, char *parv[])
 	role = get_template_name(mc, ca->level);
 
 	tm = *localtime(&ca->tmodified);
-	strftime(strfbuf, sizeof(strfbuf) - 1, "%b %d %H:%M:%S %Y", &tm);
+	strftime(strfbuf, sizeof(strfbuf) - 1,"%b %d %H:%M:%S %Y", &tm);
 
 	command_success_nodata(si, _("Access for \2%s\2 in \2%s\2:"), target, channel);
 
@@ -713,6 +713,7 @@ static void cs_cmd_access_del(sourceinfo_t *si, int parc, char *parv[])
 	chanacs_t *ca;
 	myentity_t *mt;
 	mychan_t *mc;
+	unsigned int restrictflags;
 	const char *channel = parv[0];
 	const char *target = parv[1];
 	const char *role;
@@ -731,10 +732,12 @@ static void cs_cmd_access_del(sourceinfo_t *si, int parc, char *parv[])
 		return;
 	}
 
+	mt = myentity_find_ext(target);
+
 	/* allow a user to resign their access even without FLAGS access. this is
 	 * consistent with the other commands. --nenolod
 	 */
-	if (!chanacs_source_has_flag(mc, si, CA_FLAGS) && si->smu != NULL && !strcasecmp(target, entity(si->smu)->name))
+	if (!chanacs_source_has_flag(mc, si, CA_FLAGS) && entity(si->smu) != mt)
 	{
 		command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
 		return;
@@ -744,7 +747,7 @@ static void cs_cmd_access_del(sourceinfo_t *si, int parc, char *parv[])
 		ca = chanacs_open(mc, NULL, target, true);
 	else
 	{
-		if (!(mt = myentity_find_ext(target)))
+		if (mt == NULL)
 		{
 			command_fail(si, fault_nosuch_target, _("\2%s\2 is not registered."), target);
 			return;
@@ -769,7 +772,29 @@ static void cs_cmd_access_del(sourceinfo_t *si, int parc, char *parv[])
 
 	role = get_template_name(mc, ca->level);
 
-	ca->level = 0;
+	restrictflags = chanacs_source_flags(mc, si);
+	if (restrictflags & CA_FOUNDER)
+		restrictflags = ca_all;
+	else
+	{
+		if (restrictflags & CA_AKICK && entity(si->smu) == mt)
+		{
+			command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
+			return;
+		}
+
+		if (entity(si->smu) != mt)
+			restrictflags = allow_flags(mc, restrictflags);
+	}
+
+	unsigned int i = 0;
+
+	if (!chanacs_modify(ca, &i, &ca->level, restrictflags))
+	{
+		command_fail(si, fault_noprivs, _("You may not remove \2%s\2 from the \2%s\2 role."), target, role);
+		return;
+	}
+
 	chanacs_close(ca);
 
 	command_success_nodata(si, _("\2%s\2 was removed from the \2%s\2 role in \2%s\2."), target, role, channel);
@@ -788,9 +813,10 @@ static void cs_cmd_access_del(sourceinfo_t *si, int parc, char *parv[])
 static void cs_cmd_access_add(sourceinfo_t *si, int parc, char *parv[])
 {
 	chanacs_t *ca;
-	myentity_t *mt;
 	mychan_t *mc;
-	unsigned int new_level;
+	myentity_t *mt;
+	unsigned int oldflags, restrictflags;
+	unsigned int newflags, addflags, removeflags;
 	const char *channel = parv[0];
 	const char *target = parv[1];
 	const char *role = parv[2];
@@ -845,14 +871,39 @@ static void cs_cmd_access_add(sourceinfo_t *si, int parc, char *parv[])
 		return;
 	}
 
-	new_level = get_template_flags(mc, role);
-	if (new_level == 0)
+	newflags = get_template_flags(mc, role);
+	if (newflags == 0)
 	{
 		chanacs_close(ca);
 		command_fail(si, fault_toomany, _("Role \2%s\2 does not exist."), role);
 		return;
 	}
-	ca->level = new_level;
+
+	restrictflags = chanacs_source_flags(mc, si);
+	if (restrictflags & CA_FOUNDER)
+		restrictflags = ca_all;
+	else
+	{
+		if (restrictflags & CA_AKICK && entity(si->smu) == mt)
+		{
+			command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
+			return;
+		}
+
+		if (entity(si->smu) != mt)
+			restrictflags = allow_flags(mc, restrictflags);
+	}
+
+	oldflags = ca->level;
+
+	addflags = newflags & ~oldflags;
+	removeflags = ca_all & ~newflags;
+
+	if (!chanacs_modify(ca, &addflags, &removeflags, restrictflags))
+	{
+		command_fail(si, fault_noprivs, _("You may not add \2%s\2 to the \2%s\2 role."), target, role);
+		return;
+	}
 
 	chanacs_close(ca);
 
@@ -874,7 +925,8 @@ static void cs_cmd_access_set(sourceinfo_t *si, int parc, char *parv[])
 	chanacs_t *ca;
 	myentity_t *mt;
 	mychan_t *mc;
-	unsigned int new_level;
+	unsigned int oldflags, restrictflags;
+	unsigned int newflags, addflags, removeflags;
 	const char *channel = parv[0];
 	const char *target = parv[1];
 	const char *role = parv[2];
@@ -922,22 +974,54 @@ static void cs_cmd_access_set(sourceinfo_t *si, int parc, char *parv[])
 		return;
 	}
 
-	new_level = get_template_flags(mc, role);
+	newflags = get_template_flags(mc, role);
 
-	if (new_level == 0)
+	if (newflags == 0)
 	{
 		chanacs_close(ca);
 		command_fail(si, fault_toomany, _("Role \2%s\2 does not exist."), role);
 		return;
 	}
 
-	if ((ca->level & CA_FOUNDER) && !(new_level & CA_FOUNDER) && mychan_num_founders(mc) == 1)
+	if ((ca->level & CA_FOUNDER) && !(newflags & CA_FOUNDER) && mychan_num_founders(mc) == 1)
 	{
 		command_fail(si, fault_noprivs, _("You may not remove the last founder."));
 		return;
 	}
 
-	ca->level = new_level;
+	newflags = get_template_flags(mc, role);
+	if (newflags == 0)
+	{
+		chanacs_close(ca);
+		command_fail(si, fault_toomany, _("Role \2%s\2 does not exist."), role);
+		return;
+	}
+
+	restrictflags = chanacs_source_flags(mc, si);
+	if (restrictflags & CA_FOUNDER)
+		restrictflags = ca_all;
+	else
+	{
+		if (restrictflags & CA_AKICK && entity(si->smu) == mt)
+		{
+			command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
+			return;
+		}
+
+		if (entity(si->smu) != mt)
+			restrictflags = allow_flags(mc, restrictflags);
+	}
+
+	oldflags = ca->level;
+
+	addflags = newflags & ~oldflags;
+	removeflags = ca_all & ~newflags;
+
+	if (!chanacs_modify(ca, &addflags, &removeflags, restrictflags))
+	{
+		command_fail(si, fault_noprivs, _("You may not add \2%s\2 to the \2%s\2 role."), target, role);
+		return;
+	}
 
 	chanacs_close(ca);
 
@@ -1013,14 +1097,14 @@ static void cs_cmd_role_add(sourceinfo_t *si, int parc, char *parv[])
 		command_fail(si, fault_nosuch_target, _("Channel \2%s\2 is not registered."), channel);
 		return;
 	}
-	
+
 	if (!role)
 	{
 		command_fail(si, fault_needmoreparams, STR_INSUFFICIENT_PARAMS, "ROLE ADD|SET");
 		command_fail(si, fault_needmoreparams, _("Syntax: ROLE <#channel> ADD|SET <role> [flags]"));
 		return;
 	}
-	
+
 	if (!chanacs_source_has_flag(mc, si, CA_FLAGS))
 	{
 		command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
@@ -1093,14 +1177,14 @@ static void cs_cmd_role_set(sourceinfo_t *si, int parc, char *parv[])
 		command_fail(si, fault_nosuch_target, _("Channel \2%s\2 is not registered."), channel);
 		return;
 	}
-	
+
 	if (!role)
 	{
 		command_fail(si, fault_needmoreparams, STR_INSUFFICIENT_PARAMS, "ROLE ADD|SET");
 		command_fail(si, fault_needmoreparams, _("Syntax: ROLE <#channel> ADD|SET <role> [flags]"));
 		return;
 	}
-	
+
 	if (!chanacs_source_has_flag(mc, si, CA_FLAGS))
 	{
 		command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
@@ -1172,14 +1256,14 @@ static void cs_cmd_role_del(sourceinfo_t *si, int parc, char *parv[])
 		command_fail(si, fault_nosuch_target, _("Channel \2%s\2 is not registered."), channel);
 		return;
 	}
-	
+
 	if (!role)
 	{
 		command_fail(si, fault_needmoreparams, STR_INSUFFICIENT_PARAMS, "ROLE DEL");
 		command_fail(si, fault_needmoreparams, _("Syntax: ROLE <#channel> DEL <role>"));
 		return;
 	}
-	
+
 	if (!chanacs_source_has_flag(mc, si, CA_FLAGS))
 	{
 		command_fail(si, fault_noprivs, _("You are not authorized to perform this operation."));
