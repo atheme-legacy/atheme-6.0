@@ -83,7 +83,7 @@ static void gs_cmd_register(sourceinfo_t *si, int parc, char *parv[])
 		return;
 	}
 
-	if (myuser_count_group_flag(si->smu, GA_FOUNDER) > maxgroups)
+	if (myuser_count_group_flag(si->smu, GA_FOUNDER) > maxgroups && !has_priv(si, PRIV_REG_NOLIMIT))
 	{
 		command_fail(si, fault_toomany, _("You have too many groups registered."));
 		return;
