@@ -1,3 +1,17 @@
+Atheme Services 6.0.10 Release Notes
+Codename: "Obligatory security-related update."
+====================================
+ircd
+- charybdis: send messages to channels even if we're not on it from the bots
+  themselves.
+- unrealircd: reset +x if a vhost is removed
+- inspircd: reset +x if a vhost is removed and track whether or not m_cloaking
+  is loaded.
+nickserv
+- ensure certfp resources are released when an account object is destroyed
+bugs fixed in this release
+- SRV-148, SRV-160, SRV-166
+
 Atheme Services 6.0.9 Release Notes
 Codename: "Occupy IRC."
 ===================================
