@@ -1,3 +1,19 @@
+Atheme Services 6.0.11 Release Notes
+Codename: "Endorsed by Plato"
+====================================
+ircd
+- inspircd: use ENDBURST to determine who to elicit PING/PONG from.
+botserv
+- add '/' to the character blacklist.
+chanserv
+- info: Do not display channel fantasy prefix if fantasy is disabled 
+  either netwide or on the channel.
+nickserv
+- list: Give useful feedback on bad ns list predicates, fix a corner case
+  in parsing and fix some grammar errors related to "criterion".
+contrib
+- anope_convert.c: Make sure there is actual data in metadata fields.
+
 Atheme Services 6.0.10 Release Notes
 Codename: "Obligatory security-related update."
 ====================================
