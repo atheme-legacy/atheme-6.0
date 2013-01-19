@@ -883,7 +883,7 @@ static void os_cmd_clones_setexempt(sourceinfo_t *si, int parc, char *parv[])
 				}
 
 				logcommand(si, CMDLOG_ADMIN, "CLONES:SETEXEMPT: \2%s\2 allowed: \2%d\2, warn: \2%d\2, kill: \2%d\2 (reason: \2%s\2) (duration: \2%s\2)",
-					c->ip, c->allowed, c->warn, c->kill, c->reason, timediff(c->expires));
+					c->ip, c->allowed, c->warn, c->kill, c->reason, timediff(c->expires > CURRTIME ? c->expires - CURRTIME : 0));
 				return;
 			}
 		}
