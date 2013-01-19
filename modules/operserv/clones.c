@@ -790,7 +790,6 @@ static void os_cmd_clones_setexempt(sourceinfo_t *si, int parc, char *parv[])
 					{
 						command_success_nodata(si,_("Clone warning messages will be disabled for host \2%s\2"),ip);
 						c->warn = 0;
-						return;
 					}
 					else if (clones < c->allowed)
 					{
@@ -802,9 +801,11 @@ static void os_cmd_clones_setexempt(sourceinfo_t *si, int parc, char *parv[])
 						command_fail(si, fault_badparams, _("Warned clones limit must be less than the kill limit of %d."), c->kill);
 						return;
 					}
-
-					c->warn = clones;
-					command_success_nodata(si,_("Warned clones limit for host \2%s\2 set to \2%d\2"),ip,c->warn);
+					else
+					{
+						c->warn = clones;
+						command_success_nodata(si,_("Warned clones limit for host \2%s\2 set to \2%d\2"),ip,c->warn);
+					}
 				}
 				else if (!strcasecmp(subcmd,"KILL"))
 				{
@@ -813,16 +814,17 @@ static void os_cmd_clones_setexempt(sourceinfo_t *si, int parc, char *parv[])
 					{
 						command_success_nodata(si,_("Clone kills will be disabled for host \2%s\2"),ip);
 						c->kill = 0;
-						return;
 					}
 					else if (clones <= clones_warn)
 					{
 						command_fail(si, fault_badparams, _("Killed clones limit must be more than the warn limit of %d"), c->warn);
 						return;
 					}
-
-					c->kill = clones;
-					command_success_nodata(si,_("Kill clone limit for host \2%s\2 set to \2%d\2"),ip,c->kill);
+					else
+					{
+						c->kill = clones;
+						command_success_nodata(si,_("Kill clone limit for host \2%s\2 set to \2%d\2"),ip,c->kill);
+					}
 				}
 				else if (!strcasecmp(subcmd,"DURATION"))
 				{
@@ -879,10 +881,11 @@ static void os_cmd_clones_setexempt(sourceinfo_t *si, int parc, char *parv[])
 					command_fail(si, fault_badparams, _("Syntax: CLONES SETEXEMPT <IP> <ALLOWED | WARN | KILL | DURATION | REASON> <value>"));
 					return;
 				}
+
+				logcommand(si, CMDLOG_ADMIN, "CLONES:SETEXEMPT: \2%s\2 allowed: \2%d\2, warn: \2%d\2, kill: \2%d\2 (reason: \2%s\2) (duration: \2%s\2)",
+					c->ip, c->allowed, c->warn, c->kill, c->reason, timediff(c->expires));
 				return;
 			}
-
-			logcommand(si, CMDLOG_ADMIN, "CLONES:SETEXEMPT: \2%s\2 \2%d\2 (reason: \2%s\2) (duration: \2%s\2)", ip, clones, c->reason, timediff(duration));
 		}
 
 		command_fail(si, fault_nosuch_target, _("\2%s\2 not found in clone exempt list."), ip);
